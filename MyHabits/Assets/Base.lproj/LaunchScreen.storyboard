@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="nLB-hj-kWG">
-                                <rect key="frame" x="-315.66666666666669" y="309" width="1024.3333333333333" height="150"/>
+                                <rect key="frame" x="-315.66666666666669" y="363.66666666666669" width="1024.3333333333333" height="150.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="snB-xZ-GbM"/>
                                 </constraints>
@@ -33,9 +33,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="nLB-hj-kWG" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="HSK-1f-kYs"/>
                             <constraint firstItem="nLB-hj-kWG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ecA-J0-Xw8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fCX-Qn-T8l" secondAttribute="bottom" constant="200" id="oCP-KN-Vyz"/>
-                            <constraint firstItem="nLB-hj-kWG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="250" id="oIg-zi-fPx"/>
                             <constraint firstItem="fCX-Qn-T8l" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wBZ-2b-Kyx"/>
                         </constraints>
                     </view>
