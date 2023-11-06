@@ -16,18 +16,33 @@ class HabitCreateViewController: UIViewController {
         label.text = "Title"
         label.font = .boldSystemFont(ofSize: 16)
         label.textColor = UIColor(named: "textColor")
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private lazy var titleTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Morning jogging, 8 hours sleep etc..."
+        textField.font = .systemFont(ofSize: 16)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
     }()
     
     private lazy var colorLabel: UILabel = {
         let label = UILabel()
         label.text = "Color"
+        label.font = .boldSystemFont(ofSize: 16)
+        label.textColor = UIColor(named: "textColor")
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.text = "Time"
+        label.font = .boldSystemFont(ofSize: 16)
+        label.textColor = UIColor(named: "textColor")
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -36,10 +51,28 @@ class HabitCreateViewController: UIViewController {
         setupUI()
         setupNavigationBar()
         addSubviews()
+        setupConstraints()
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
+    }
+    
+    private func addSubviews() {
+        view.addSubview(titleLabel)
+        view.addSubview(titleTextField)
+    }
+    
+    private func setupConstraints() {
+        let safeAreaGuide = view.safeAreaLayoutGuide
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
+            
+            titleTextField.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
+            titleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16)
+        ])
     }
     
     private func setupNavigationBar() {
@@ -50,10 +83,6 @@ class HabitCreateViewController: UIViewController {
         
         navigationItem.rightBarButtonItems = [saveButton]
         navigationItem.leftBarButtonItems = [cancelButton]
-    }
-    
-    private func addSubviews() {
-        view.addSubview(titleLabel)
     }
     
     @IBAction func saveButtonTapped(sender: AnyObject) {

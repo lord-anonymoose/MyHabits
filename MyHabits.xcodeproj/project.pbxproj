@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8E6C48CD2AF997BF00D56CDD /* HabitCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */; };
 		8E6C48CF2AF997C800D56CDD /* HabitEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */; };
+		8E6C48D32AF9A17A00D56CDD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48D22AF9A17A00D56CDD /* Extensions.swift */; };
 		8EB8760C2AF583FC0057ECEF /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760B2AF583FC0057ECEF /* HabitsStore.swift */; };
 		8EB8760E2AF5848C0057ECEF /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */; };
 		8EB876102AF584FB0057ECEF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760F2AF584FB0057ECEF /* InfoViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreateViewController.swift; sourceTree = "<group>"; };
 		8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditViewController.swift; sourceTree = "<group>"; };
+		8E6C48D22AF9A17A00D56CDD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8EB8760B2AF583FC0057ECEF /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
 		8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		8EB8760F2AF584FB0057ECEF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		8EFFEED02AF58DF8006EBB58 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				8E6C48D22AF9A17A00D56CDD /* Extensions.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EB8760C2AF583FC0057ECEF /* HabitsStore.swift in Sources */,
+				8E6C48D32AF9A17A00D56CDD /* Extensions.swift in Sources */,
 				8ED2CA6C2AF57E3B00808041 /* TabBarViewController.swift in Sources */,
 				8ED2CA682AF57E3B00808041 /* AppDelegate.swift in Sources */,
 				8EB8760E2AF5848C0057ECEF /* HabitsViewController.swift in Sources */,
