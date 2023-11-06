@@ -85,8 +85,7 @@ Build a habit and make it a permanent lifestyle change.
         let firstString = NSAttributedString(string: "Source: ", attributes: firstAttribute)
 
         let secondAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.link, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue]
-        let secondString = NSAttributedString(string: "www.link.com", attributes: secondAttribute)
-
+        let secondString = NSAttributedString(string: "www.activeiron.com", attributes: secondAttribute)
 
         let resultString = NSMutableAttributedString()
         resultString.append(firstString)
@@ -96,6 +95,7 @@ Build a habit and make it a permanent lifestyle change.
         button.titleLabel?.font = .systemFont(ofSize: 16)
         
         button.contentHorizontalAlignment = .left
+
         return button
     }()
 
@@ -112,6 +112,19 @@ Build a habit and make it a permanent lifestyle change.
         scrollView.contentSize = contentView.frame.size
     }
 
+    // MARK: - Actions
+    
+    @IBAction func didTapSourceLink(sender: AnyObject) {
+        if let url = URL(string: "https://www.activeiron.com/blog/the-21-90-rule-make-life-better/#:~:text=The%2021%2F90%20rule%20states,a%20part%20of%20your%20lifestyle") {
+            if #available(iOS 10, *){
+                UIApplication.shared.open(url)
+            }else{
+                UIApplication.shared.openURL(url)
+            }
+            
+        }
+    }
+
     
     // MARK: - Private
 
@@ -124,6 +137,8 @@ Build a habit and make it a permanent lifestyle change.
         contentView.addSubview(titleView)
         contentView.addSubview(textView)
         contentView.addSubview(linkButton)
+        linkButton.addTarget(self, action: #selector(didTapSourceLink), for: .touchUpInside)
+
     }
     
     private func setupConstraints() {
