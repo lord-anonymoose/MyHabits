@@ -79,9 +79,23 @@ Build a habit and make it a permanent lifestyle change.
     private let linkButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Source: ", for: .normal)
+        
+
+        let firstAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "textColor") ?? .label ]
+        let firstString = NSAttributedString(string: "Source: ", attributes: firstAttribute)
+
+        let secondAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.link, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue]
+        let secondString = NSAttributedString(string: "www.link.com", attributes: secondAttribute)
+
+
+        let resultString = NSMutableAttributedString()
+        resultString.append(firstString)
+        resultString.append(secondString)
+        
+        button.setAttributedTitle(resultString, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16)
+        
         button.contentHorizontalAlignment = .left
-        //button.backgroundColor = .green
         return button
     }()
 
@@ -134,7 +148,6 @@ Build a habit and make it a permanent lifestyle change.
             textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             textView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 16),
-            //textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             linkButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             linkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
