@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E6C48CD2AF997BF00D56CDD /* HabitCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */; };
+		8E6C48CF2AF997C800D56CDD /* HabitEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */; };
 		8EB8760C2AF583FC0057ECEF /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760B2AF583FC0057ECEF /* HabitsStore.swift */; };
 		8EB8760E2AF5848C0057ECEF /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */; };
 		8EB876102AF584FB0057ECEF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760F2AF584FB0057ECEF /* InfoViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreateViewController.swift; sourceTree = "<group>"; };
+		8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditViewController.swift; sourceTree = "<group>"; };
 		8EB8760B2AF583FC0057ECEF /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
 		8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		8EB8760F2AF584FB0057ECEF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -41,12 +45,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E6C48D02AF9980400D56CDD /* Habit */ = {
+			isa = PBXGroup;
+			children = (
+				8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */,
+				8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */,
+				8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */,
+			);
+			path = Habit;
+			sourceTree = "<group>";
+		};
+		8E6C48D12AF9981900D56CDD /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				8EB8760F2AF584FB0057ECEF /* InfoViewController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
 		8EB876112AF586230057ECEF /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				8ED2CA6B2AF57E3B00808041 /* TabBarViewController.swift */,
-				8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */,
-				8EB8760F2AF584FB0057ECEF /* InfoViewController.swift */,
+				8E6C48D02AF9980400D56CDD /* Habit */,
+				8E6C48D12AF9981900D56CDD /* Info */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -195,6 +217,8 @@
 				8ED2CA6C2AF57E3B00808041 /* TabBarViewController.swift in Sources */,
 				8ED2CA682AF57E3B00808041 /* AppDelegate.swift in Sources */,
 				8EB8760E2AF5848C0057ECEF /* HabitsViewController.swift in Sources */,
+				8E6C48CD2AF997BF00D56CDD /* HabitCreateViewController.swift in Sources */,
+				8E6C48CF2AF997C800D56CDD /* HabitEditViewController.swift in Sources */,
 				8EB876102AF584FB0057ECEF /* InfoViewController.swift in Sources */,
 				8ED2CA6A2AF57E3B00808041 /* SceneDelegate.swift in Sources */,
 			);

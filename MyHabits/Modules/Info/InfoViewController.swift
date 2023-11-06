@@ -40,14 +40,14 @@ class InfoViewController: UIViewController {
         
         label.text = "A habit in 21 days"
         label.font = .boldSystemFont(ofSize: 20)
-
+        label.textColor = UIColor(named: "textColor")
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private let textView: UILabel = {
-        let view = UILabel()
+        let label = UILabel()
         
         let string = """
 Build a habit and make it a permanent lifestyle change.
@@ -66,14 +66,15 @@ Build a habit and make it a permanent lifestyle change.
 \nRinse and repeat! The 21/90 rule can be used again and again to achieve your goals, build habits and change your lifestyle. Start small but think big.
 """
         let attributedString = NSMutableAttributedString(string: string)
-        view.attributedText = attributedString
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.numberOfLines = 0
-        view.sizeToFit()
-        view.textAlignment = .justified
+        label.attributedText = attributedString
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.sizeToFit()
+        label.textAlignment = .justified
+        label.textColor = UIColor(named: "textColor")
+        label.isUserInteractionEnabled = true
         
-        view.isUserInteractionEnabled = true
-        return view
+        return label
     }()
     
     private let linkButton: UIButton = {
@@ -129,6 +130,7 @@ Build a habit and make it a permanent lifestyle change.
     // MARK: - Private
 
     private func setupUI() {
+        view.backgroundColor = .systemBackground
     }
     
     private func addSubviews() {
