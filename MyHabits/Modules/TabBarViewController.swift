@@ -17,6 +17,7 @@ class TabBarViewController: UITabBarController {
     
     func setupUI() {
         self.tabBar.backgroundColor = .systemGray6
+        self.tabBar.tintColor = UIColor(named: "Electric Violet") ?? .blue
         
         let habitsNavigationController = UINavigationController(rootViewController: HabitCreateViewController())
         //habitsNavigationController.navigationBar.prefersLargeTitles = true

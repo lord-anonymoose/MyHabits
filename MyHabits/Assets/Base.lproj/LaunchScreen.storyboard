@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,10 +24,10 @@
                                     <constraint firstAttribute="height" constant="150" id="snB-xZ-GbM"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed for productivity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCX-Qn-T8l">
-                                <rect key="frame" x="76.000000000000014" y="592.66666666666663" width="241.33333333333337" height="25.333333333333371"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyHabits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCX-Qn-T8l">
+                                <rect key="frame" x="149.33333333333334" y="742.66666666666663" width="94.666666666666657" height="25.333333333333371"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" name="electricViolet"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -35,7 +36,7 @@
                         <constraints>
                             <constraint firstItem="nLB-hj-kWG" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="HSK-1f-kYs"/>
                             <constraint firstItem="nLB-hj-kWG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ecA-J0-Xw8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fCX-Qn-T8l" secondAttribute="bottom" constant="200" id="oCP-KN-Vyz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fCX-Qn-T8l" secondAttribute="bottom" constant="50" id="oCP-KN-Vyz"/>
                             <constraint firstItem="fCX-Qn-T8l" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wBZ-2b-Kyx"/>
                         </constraints>
                     </view>
@@ -47,6 +48,9 @@
     </scenes>
     <resources>
         <image name="launchScreenImage" width="1024" height="1024"/>
+        <namedColor name="electricViolet">
+            <color red="0.63137254901960782" green="0.086274509803921567" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

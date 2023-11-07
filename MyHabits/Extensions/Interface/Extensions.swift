@@ -32,11 +32,41 @@ class UITextFieldWithPadding: UITextField {
 }
 
 class ColorCircle: UIView {
+    var color: UIColor
+
+    init(color:UIColor){
+        
+        self.color = color
+        //Or you can use custom frame.
+        //let frame = self.frame
+        super.init(frame: .zero)
+        layoutSubviews()
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.backgroundColor = .green
+        self.backgroundColor = self.color
+        self.isUserInteractionEnabled = true
         self.layer.cornerRadius = self.frame.size.height / 2
         self.clipsToBounds = true
     }
+    
+    public func updateColor() {
+        self.backgroundColor = self.color
+    }
+}
+
+enum customColor: String {
+    case blueRibbon = "Blue Ribbon"
+    case electricViolet = "Electric Violet"
+    case forestGreen = "Forest Green"
+    case neonCarrot = "Neon Carrot"
+    case royalBlue = "Royal Blue"
+    
+    static let allValues = [blueRibbon, electricViolet, forestGreen, neonCarrot, royalBlue]
 }
 
