@@ -12,6 +12,7 @@ class TestViewController: UIViewController {
     private lazy var colorPickerView: ColorPickerView = {
         let pickerView = ColorPickerView()
         pickerView.translatesAutoresizingMaskIntoConstraints = false
+        //pickerView.isHidden = false
         //pickerView.isUserInteractionEnabled = false
         return pickerView
     }()
@@ -24,6 +25,7 @@ class TestViewController: UIViewController {
     }
 
     func setupUI() {
+        view.backgroundColor = .systemBackground
     }
     
     func addSubviews() {

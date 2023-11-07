@@ -1,5 +1,5 @@
 //
-//  ColorPickerView.swift
+//  HabitFormView.swift
 //  MyHabits
 //
 //  Created by Philipp Lazarev on 07.11.2023.
@@ -7,33 +7,15 @@
 
 import UIKit
 
-class ColorPickerView: UIView {
+/*
+class HabitFormView: UIView {
 
     // MARK: - Subviews
-
-    private lazy var colorPicker: UIPickerView = {
-        let picker = UIPickerView()
-        picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.dataSource = self
-        picker.delegate = self
-        picker.isHidden = false
-        return picker
-    }()
-    
-    private lazy var colorSave: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Save", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.isHidden = false
-        button.addTarget(self, action: #selector(didTapColorSave), for: .touchUpInside)
-        return button
-    }()
     
     // MARK: - Lifecycle
 
     init() {
         super.init(frame: .zero)
-        setupUI()
         addSubviews()
         setupConstraints()
     }
@@ -51,13 +33,10 @@ class ColorPickerView: UIView {
     // MARK: - Private
 
     private func setupUI() {
-        self.backgroundColor = .systemBackground
+        
     }
     
     private func addSubviews() {
-        //self.isUserInteractionEnabled = false
-        addSubview(colorSave)
-        addSubview(colorPicker)
     }
     
     private func setupConstraints() {
@@ -74,8 +53,14 @@ class ColorPickerView: UIView {
         ])
     }
     
+    private func showUI() {
+        colorPicker.isHidden = false
+        colorSave.isHidden = false
+    }
+    
     private func hideUI() {
-        setIsHidden(true, animated: true)
+        colorPicker.isHidden = true
+        colorSave.isHidden = true
     }
 }
 
@@ -92,29 +77,5 @@ extension ColorPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
         print(customColor.allValues[row].rawValue)
         return customColor.allValues[row].rawValue
     }
-    
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = customColor.allValues[row].rawValue
-        let attribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "textColor") ?? .label ]
-        let myTitle = NSAttributedString(string: titleData, attributes: attribute)
-        return myTitle
-    }
 }
-
-extension ColorPickerView {
-    func setIsHidden(_ hidden: Bool, animated: Bool) {
-        if animated {
-            if self.isHidden && !hidden {
-                self.alpha = 0.0
-                self.isHidden = false
-            }
-            UIView.animate(withDuration: 0.50, animations: {
-                self.alpha = hidden ? 0.0 : 1.0
-            }) { (complete) in
-                self.isHidden = hidden
-            }
-        } else {
-            self.isHidden = hidden
-        }
-    }
-}
+*/
