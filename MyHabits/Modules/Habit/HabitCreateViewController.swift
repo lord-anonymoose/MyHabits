@@ -60,7 +60,7 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         let firstAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "textColor") ?? .label ]
         let firstString = NSAttributedString(string: "Daily at ", attributes: firstAttribute)
 
-        let secondAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.link, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue]
+        let secondAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "electricViolet") ?? .link]
         let secondString = NSAttributedString(string: "15:00", attributes: secondAttribute)
 
         let resultString = NSMutableAttributedString()
@@ -130,7 +130,9 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         self.navigationItem.title = "Create a habit"
         
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
+        saveButton.tintColor = UIColor(named: "electricViolet") ?? .blue
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        cancelButton.tintColor = UIColor(named: "electricViolet") ?? .blue
         
         navigationItem.rightBarButtonItems = [saveButton]
         navigationItem.leftBarButtonItems = [cancelButton]
@@ -144,11 +146,11 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         print("Cancel button tapped")
     }
     
-    // Setting character limit for UITextField (50 characters)
+    // Setting character limit for UITextField (48 characters)
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        return updatedText.count <= 50
+        return updatedText.count <= 48
     }
 }

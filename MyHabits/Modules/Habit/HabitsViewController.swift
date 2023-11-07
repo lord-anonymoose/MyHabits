@@ -21,6 +21,7 @@ class HabitsViewController: UIViewController {
     
     func setupNavigationBar() {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        addButton.tintColor = UIColor(named: "electricViolet")
         navigationItem.rightBarButtonItems = [addButton]
     }
     

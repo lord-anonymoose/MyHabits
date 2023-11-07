@@ -35,8 +35,17 @@ class ColorCircle: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.backgroundColor = .green
+        self.isUserInteractionEnabled = true
         self.layer.cornerRadius = self.frame.size.height / 2
         self.clipsToBounds = true
     }
+}
+
+enum customColor: String {
+    case blueRibbon = "Blue Ribbon"
+    case electricViolet = "Electric Violet"
+    case forestGreen = "Forest Green"
+    case neonCarrot = "Neon Carrot"
+    case royalBlue = "Royal Blue"
 }
 
