@@ -39,9 +39,31 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
     }()
     
     private lazy var colorCircle: ColorCircle = {
-        let circle = ColorCircle()
+        let circle = ColorCircle(color: .yellow)
         circle.translatesAutoresizingMaskIntoConstraints = false
+        circle.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(colorCircleTapped))
+        circle.addGestureRecognizer(tap)
         return circle
+    }()
+    
+    private lazy var colorPicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.dataSource = self
+        picker.delegate = self
+        picker.isHidden = true
+        return picker
+    }()
+    
+    private lazy var colorSave: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Save", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
+        button.backgroundColor = .green
+        button.addTarget(self, action: #selector(didTapColorSave), for: .touchUpInside)
+        return button
     }()
     
     private lazy var timeLabel: UILabel = {
@@ -93,6 +115,9 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(colorCircle)
         view.addSubview(timeLabel)
         view.addSubview(timeSelection)
+        view.addSubview(colorPicker)
+        view.addSubview(colorSave)
+        //view.addSubview(colorCancel)
     }
     
     private func setupConstraints() {
@@ -122,7 +147,18 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
             
             timeSelection.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
             timeSelection.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 16),
-            timeSelection.trailingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 128)
+            timeSelection.trailingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 128),
+            
+            colorSave.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
+            colorSave.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
+            colorSave.topAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: -48),
+            colorSave.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: -16),
+        
+            colorPicker.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            colorPicker.topAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: -240),
+            colorPicker.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            colorPicker.bottomAnchor.constraint(equalTo: colorSave.topAnchor)
+            
         ])
     }
     
@@ -130,9 +166,9 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         self.navigationItem.title = "Create a habit"
         
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
-        saveButton.tintColor = UIColor(named: "electricViolet") ?? .blue
+        saveButton.tintColor = UIColor(named: "Electric Violet") ?? .blue
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
-        cancelButton.tintColor = UIColor(named: "electricViolet") ?? .blue
+        cancelButton.tintColor = UIColor(named: "Electric Violet") ?? .blue
         
         navigationItem.rightBarButtonItems = [saveButton]
         navigationItem.leftBarButtonItems = [cancelButton]
@@ -140,10 +176,28 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
         print("Save button tapped")
+        //self.colorCircle.color = .red
+        self.colorCircle.updateColor()
+        self.colorPicker.isHidden = false
+        self.colorSave.isHidden = false
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         print("Cancel button tapped")
+    }
+    
+    @IBAction func didTapColorSave(sender: AnyObject) {
+        let currentColorIndex = customColor.allValues[self.colorPicker.selectedRow(inComponent: 0)]
+        let currentColor = UIColor(named: currentColorIndex.rawValue) ?? .black
+        self.colorCircle.color = currentColor
+        self.colorCircle.updateColor()
+        self.colorPicker.isHidden = true
+        self.colorSave.isHidden = true
+    }
+    
+    @IBAction func colorCircleTapped(sender: AnyObject) {
+        self.colorPicker.isHidden = false
+        self.colorSave.isHidden = false
     }
     
     // Setting character limit for UITextField (48 characters)
@@ -152,5 +206,22 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         return updatedText.count <= 48
+    }
+}
+
+extension HabitCreateViewController: UIPickerViewDataSource, UIPickerViewDelegate  {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        return customColor.allValues.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        //print(customColor.allValues[row].rawValue)
+        self.colorCircle.color = UIColor(named: customColor.allValues[row].rawValue) ?? .black
+        self.colorCircle.updateColor()
+        return customColor.allValues[row].rawValue
     }
 }
