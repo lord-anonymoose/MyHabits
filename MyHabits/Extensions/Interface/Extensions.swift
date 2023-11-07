@@ -31,3 +31,12 @@ class UITextFieldWithPadding: UITextField {
     }
 }
 
+class ColorCircle: UIView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.backgroundColor = .green
+        self.layer.cornerRadius = self.frame.size.height / 2
+        self.clipsToBounds = true
+    }
+}
+
