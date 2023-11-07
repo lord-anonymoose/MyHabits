@@ -17,6 +17,19 @@ class TestViewController: UIViewController {
         return pickerView
     }()
     
+    private lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.datePickerMode = .time
+        datePicker.preferredDatePickerStyle = .wheels
+        
+        //datePicker.style = .wheels
+        //datePicker.tintColor = .green
+        datePicker.subviews[0].backgroundColor = .white
+        //datePicker.setValue(UIColor.systemBackground, forKey: "backgroundColor")
+        return datePicker
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -30,6 +43,7 @@ class TestViewController: UIViewController {
     
     func addSubviews() {
         view.addSubview(colorPickerView)
+        view.addSubview(datePicker)
     }
     
     func setupConstraints() {
@@ -40,10 +54,11 @@ class TestViewController: UIViewController {
             colorPickerView.topAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: -48),
             colorPickerView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
             colorPickerView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
-            //colorPickerView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            //colorPickerView.topAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: -240),
-            //colorPickerView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
-            //colorPickerView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor)
+            
+            datePicker.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
+            datePicker.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
+            datePicker.heightAnchor.constraint(equalToConstant: 48),
+            datePicker.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16)
         ])
 
     }

@@ -16,7 +16,7 @@ class ColorPickerView: UIView {
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.dataSource = self
         picker.delegate = self
-        picker.isHidden = false
+        //picker.isHidden = true
         return picker
     }()
     
@@ -24,7 +24,7 @@ class ColorPickerView: UIView {
         let button = UIButton(type: .system)
         button.setTitle("Save", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.isHidden = false
+        //button.isHidden = true
         button.addTarget(self, action: #selector(didTapColorSave), for: .touchUpInside)
         return button
     }()
@@ -45,13 +45,14 @@ class ColorPickerView: UIView {
     // MARK: - Actions
     
     @IBAction func didTapColorSave(sender: AnyObject) {
-        hideUI()
+        setIsHidden(true, animated: true)
     }
     
     // MARK: - Private
 
     private func setupUI() {
         self.backgroundColor = .systemBackground
+        setIsHidden(false, animated: true)
     }
     
     private func addSubviews() {
@@ -72,10 +73,6 @@ class ColorPickerView: UIView {
             colorPicker.trailingAnchor.constraint(equalTo: trailingAnchor),
             colorPicker.bottomAnchor.constraint(equalTo: colorSave.topAnchor, constant: -16)
         ])
-    }
-    
-    private func hideUI() {
-        setIsHidden(true, animated: true)
     }
 }
 
