@@ -126,7 +126,6 @@ Build a habit and make it a permanent lifestyle change.
         }
     }
 
-    
     // MARK: - Private
 
     private func setupUI() {
@@ -140,21 +139,20 @@ Build a habit and make it a permanent lifestyle change.
         contentView.addSubview(textView)
         contentView.addSubview(linkButton)
         linkButton.addTarget(self, action: #selector(didTapSourceLink), for: .touchUpInside)
-
     }
     
     private func setupConstraints() {
         let safeAreaGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            scrollView.widthAnchor.constraint(equalTo: safeAreaGuide.widthAnchor),
             scrollView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            scrollView.widthAnchor.constraint(equalTo: safeAreaGuide.widthAnchor),
             scrollView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
             
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
@@ -170,7 +168,6 @@ Build a habit and make it a permanent lifestyle change.
             linkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             linkButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 16),
             linkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-
         ])
     }
 }

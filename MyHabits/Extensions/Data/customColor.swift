@@ -1,11 +1,9 @@
 //
-//  Extensions.swift
+//  customColor.swift
 //  MyHabits
 //
-//  Created by Philipp Lazarev on 07.11.2023.
+//  Created by Philipp Lazarev on 09.11.2023.
 //
-
-import UIKit
 
 enum customColor: String {
     case blueRibbon = "Blue Ribbon"
@@ -16,4 +14,3 @@ enum customColor: String {
     
     static let allValues = [blueRibbon, electricViolet, forestGreen, neonCarrot, royalBlue]
 }
-
