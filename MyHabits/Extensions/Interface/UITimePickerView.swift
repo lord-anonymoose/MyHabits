@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TimePickerDelegate:AnyObject {
-    func timePickerValueChanged(newTime:String)
+    func timePickerValueChanged(newTime:NSAttributedString)
 }
 
 class UITimePickerView: UIView {
@@ -16,7 +16,7 @@ class UITimePickerView: UIView {
     // MARK: - Subviews
     
     weak var delegate:TimePickerDelegate?
-    var currentTime = "11:00" {
+    var currentTime: NSAttributedString = NSAttributedString(string: "Daily at 15:00"){
         didSet {
             delegate?.timePickerValueChanged(newTime: currentTime)
         }
@@ -29,8 +29,12 @@ class UITimePickerView: UIView {
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.subviews[0].backgroundColor = .white
         
-        //datePicker.addTarget(self, action: #selector(didTapColorSave), for: UIControl.Event.valueChanged)
-
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "HH:mm"
+        let date = dateFormatter.date(from: "15:00")
+        datePicker.date = date!
+        
+        datePicker.addTarget(self, action: #selector(valueDidChange), for: UIControl.Event.valueChanged)
         return datePicker
     }()
     
@@ -39,6 +43,7 @@ class UITimePickerView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 8
         button.setTitle("Save", for: .normal)
+        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         return button
     }()
     
@@ -53,6 +58,21 @@ class UITimePickerView: UIView {
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func didTapSaveButton(sender: AnyObject) {
+        setIsHidden(true, animated: true)
+    }
+    
+    @IBAction func valueDidChange(sender: UIDatePicker) {
+        let timeFormatter = DateFormatter()
+        timeFormatter.timeStyle = DateFormatter.Style.short
+
+        let strDate = timeFormatter.string(from: timePicker.date)
+        
+        currentTime = timeToString(time: strDate)
     }
     
     // MARK: - Private
@@ -78,7 +98,22 @@ class UITimePickerView: UIView {
             saveButton.topAnchor.constraint(equalTo: timePicker.bottomAnchor, constant: 16),
             saveButton.heightAnchor.constraint(equalToConstant: 40)
         ])
-        
     }
-
 }
+
+extension UITimePickerView {
+    private func timeToString(time: String) -> NSMutableAttributedString {
+        let firstAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "textColor") ?? .label ]
+        let firstString = NSAttributedString(string: "Daily at ", attributes: firstAttribute)
+
+        let secondAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "Electric Violet") ?? .link]
+        let secondString = NSAttributedString(string: time, attributes: secondAttribute)
+
+        let resultString = NSMutableAttributedString()
+        resultString.append(firstString)
+        resultString.append(secondString)
+        
+        return resultString
+    }
+}
+

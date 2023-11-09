@@ -12,14 +12,13 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        // Do any additional setup after loading the view.
     }
     
     func setupUI() {
         self.tabBar.backgroundColor = .systemGray6
         self.tabBar.tintColor = UIColor(named: "Electric Violet") ?? .blue
         
-        let habitsNavigationController = UINavigationController(rootViewController: TestViewController())
+        let habitsNavigationController = UINavigationController(rootViewController: HabitCreateViewController())
         //habitsNavigationController.navigationBar.prefersLargeTitles = true
         habitsNavigationController.topViewController?.title = "Today"
         habitsNavigationController.tabBarItem = UITabBarItem(title: "Habits", image: UIImage(systemName: "rectangle.grid.1x2.fill"), tag: 0)

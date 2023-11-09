@@ -10,6 +10,7 @@
 		8E6C48CD2AF997BF00D56CDD /* HabitCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */; };
 		8E6C48CF2AF997C800D56CDD /* HabitEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */; };
 		8E7B40902AFD459E0058FE55 /* UITimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7B408F2AFD459E0058FE55 /* UITimePickerView.swift */; };
+		8E7B40922AFD593A0058FE55 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7B40912AFD593A0058FE55 /* UIView.swift */; };
 		8EB8760C2AF583FC0057ECEF /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760B2AF583FC0057ECEF /* HabitsStore.swift */; };
 		8EB8760E2AF5848C0057ECEF /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */; };
 		8EB876102AF584FB0057ECEF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760F2AF584FB0057ECEF /* InfoViewController.swift */; };
@@ -29,6 +30,7 @@
 		8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreateViewController.swift; sourceTree = "<group>"; };
 		8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditViewController.swift; sourceTree = "<group>"; };
 		8E7B408F2AFD459E0058FE55 /* UITimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITimePickerView.swift; sourceTree = "<group>"; };
+		8E7B40912AFD593A0058FE55 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8EB8760B2AF583FC0057ECEF /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
 		8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		8EB8760F2AF584FB0057ECEF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				8EFA22CC2AFACB4C0072E89A /* UIColorPickerView.swift */,
 				8E7B408F2AFD459E0058FE55 /* UITimePickerView.swift */,
 				8EFA22D22AFCEFD60072E89A /* UITextFieldWithPadding.swift */,
+				8E7B40912AFD593A0058FE55 /* UIView.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				8E7B40902AFD459E0058FE55 /* UITimePickerView.swift in Sources */,
 				8EFA22D12AFCEF330072E89A /* UIColorCircleView.swift in Sources */,
 				8E6C48CD2AF997BF00D56CDD /* HabitCreateViewController.swift in Sources */,
+				8E7B40922AFD593A0058FE55 /* UIView.swift in Sources */,
 				8EFA22CD2AFACB4C0072E89A /* UIColorPickerView.swift in Sources */,
 				8E6C48CF2AF997C800D56CDD /* HabitEditViewController.swift in Sources */,
 				8EB876102AF584FB0057ECEF /* InfoViewController.swift in Sources */,

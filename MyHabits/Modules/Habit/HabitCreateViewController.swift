@@ -51,7 +51,6 @@ class HabitCreateViewController: UIViewController {
     private lazy var colorPickerView: UIColorPickerView = {
         let pickerView = UIColorPickerView()
         pickerView.translatesAutoresizingMaskIntoConstraints = false
-        pickerView.saveButton.addTarget(self, action: #selector(didTapColorSave), for: .touchUpInside)
         pickerView.isHidden = true
         pickerView.alpha = 0.0
         return pickerView
@@ -66,14 +65,14 @@ class HabitCreateViewController: UIViewController {
         return label
     }()
     
-    private lazy var timeSelection: UIButton = {
+    private lazy var timeButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         let firstAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "textColor") ?? .label ]
         let firstString = NSAttributedString(string: "Daily at ", attributes: firstAttribute)
 
-        let secondAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "electricViolet") ?? .link]
+        let secondAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "Electric Violet") ?? .link]
         let secondString = NSAttributedString(string: "15:00", attributes: secondAttribute)
 
         let resultString = NSMutableAttributedString()
@@ -83,20 +82,33 @@ class HabitCreateViewController: UIViewController {
         button.setAttributedTitle(resultString, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16)
         button.contentHorizontalAlignment = .left
+                
+        button.addTarget(self, action: #selector(timeButtonTapped), for: .touchUpInside)
         
         return button
+    }()
+    
+    private lazy var timePickerView: UITimePickerView = {
+        let timePickerView = UITimePickerView()
+        timePickerView.translatesAutoresizingMaskIntoConstraints = false
+        timePickerView.isHidden = true
+        return timePickerView
     }()
     
     // MARK: - Actions
     
     @IBAction func colorCircleTapped(sender: AnyObject) {
+        if !timePickerView.isHidden {
+            timePickerView.setIsHidden(true, animated: true)
+        }
         colorPickerView.setIsHidden(false, animated: true)
     }
     
-    @IBAction func didTapColorSave(sender: AnyObject) {
-        let color = colorPickerView.getColor()
-        colorCircle.updateColor(color: color)
-        colorPickerView.setIsHidden(true, animated: true)
+    @IBAction func timeButtonTapped(sender: AnyObject) {
+        if !colorPickerView.isHidden {
+            colorPickerView.setIsHidden(true, animated: true)
+        }
+        timePickerView.setIsHidden(false, animated: true)
     }
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
@@ -114,6 +126,7 @@ class HabitCreateViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         
         colorPickerView.delegate = self
+        timePickerView.delegate = self
         titleTextField.delegate = self
         
         setupUI()
@@ -135,6 +148,8 @@ class HabitCreateViewController: UIViewController {
         view.addSubview(colorCircle)
         view.addSubview(colorPickerView)
         view.addSubview(timeLabel)
+        view.addSubview(timeButton)
+        view.addSubview(timePickerView)
     }
     
     private func setupConstraints() {
@@ -166,10 +181,20 @@ class HabitCreateViewController: UIViewController {
             timeLabel.topAnchor.constraint(equalTo: colorCircle.bottomAnchor, constant: 16),
             timeLabel.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
             
+            timeButton.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
+            timeButton.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
+            timeButton.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 16),
+            timeButton.heightAnchor.constraint(equalToConstant: 32),
+            
+            timePickerView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            timePickerView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            timePickerView.topAnchor.constraint(equalTo: timeButton.bottomAnchor, constant: 16),
+            timePickerView.heightAnchor.constraint(equalToConstant: 120),
+            
             colorPickerView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
             colorPickerView.heightAnchor.constraint(equalToConstant: 320),
             colorPickerView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
-            colorPickerView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+            colorPickerView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor)
         ])
     }
     
@@ -214,6 +239,12 @@ extension HabitCreateViewController: ColorPickerDelegate {
     }
 }
 
+extension HabitCreateViewController: TimePickerDelegate {
+    func timePickerValueChanged(newTime:NSAttributedString) {
+        timeButton.setAttributedTitle(newTime, for: .normal)
+    }
+}
+
 extension HabitCreateViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -221,8 +252,12 @@ extension HabitCreateViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        colorPickerView.setIsHidden(true, animated: true)
-        print("colorPickerView got hidden")
+        if !colorPickerView.isHidden {
+            colorPickerView.setIsHidden(true, animated: true)
+        }
+        if !timePickerView.isHidden {
+            timePickerView.setIsHidden(true, animated: true)
+        }
     }
 }
 

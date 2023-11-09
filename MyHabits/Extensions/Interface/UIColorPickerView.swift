@@ -34,9 +34,10 @@ class UIColorPickerView: UIView {
     
     public lazy var saveButton: UIButton = {
         let button = UIButton(configuration: .gray())
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 8
         button.setTitle("Save", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         return button
     }()
     
@@ -55,7 +56,7 @@ class UIColorPickerView: UIView {
     
     // MARK: - Actions
     
-    @IBAction func didTapColorSave(sender: AnyObject) {
+    @IBAction func didTapSaveButton(sender: AnyObject) {
         setIsHidden(true, animated: true)
     }
     
@@ -81,14 +82,7 @@ class UIColorPickerView: UIView {
             saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             saveButton.topAnchor.constraint(equalTo: colorPicker.bottomAnchor, constant: 8),
             saveButton.heightAnchor.constraint(equalToConstant: 40)
-            //saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
         ])
-    }
-    
-    public func getColor() -> UIColor {
-        let colorIndex = СustomColor.allValues[self.colorPicker.selectedRow(inComponent: 0)]
-        let color = UIColor(named: colorIndex.rawValue) ?? .black
-        return color
     }
 }
 
@@ -117,23 +111,5 @@ extension UIColorPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
         let attribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "textColor") ?? .label ]
         let myTitle = NSAttributedString(string: titleData, attributes: attribute)
         return myTitle
-    }
-}
-
-extension UIColorPickerView {
-    func setIsHidden(_ hidden: Bool, animated: Bool) {
-        if animated {
-            if self.isHidden && !hidden {
-                self.alpha = 0.0
-                self.isHidden = false
-            }
-            UIView.animate(withDuration: 0.25, animations: {
-                self.alpha = hidden ? 0.0 : 1.0
-            }) { (complete) in
-                self.isHidden = hidden
-            }
-        } else {
-            self.isHidden = hidden
-        }
     }
 }
