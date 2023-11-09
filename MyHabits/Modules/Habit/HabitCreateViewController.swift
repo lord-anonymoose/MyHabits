@@ -112,7 +112,22 @@ class HabitCreateViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
+        let name = titleTextField.text!
+        
+        let dateString = timeButton.currentAttributedTitle?.string ?? "Daily at 15:00"
+        let dateStringCleared = dateString.replacingOccurrences(of: "Daily at ", with: "")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "HH:mm"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        let date = dateFormatter.date(from: dateStringCleared)!
+                
+        let color = colorCircle.color
+        let newHabit = Habit(name: name, date: date, color: color)
+        
+        HabitsStore.shared.habits.append(newHabit)
         print("Save button tapped")
+        print(HabitsStore.shared.habits.count)
+        
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {

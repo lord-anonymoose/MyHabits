@@ -31,6 +31,7 @@ class UITimePickerView: UIView {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
         let date = dateFormatter.date(from: "15:00")
         datePicker.date = date!
         
