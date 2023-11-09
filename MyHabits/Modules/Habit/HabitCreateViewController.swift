@@ -38,8 +38,8 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    private lazy var colorCircle: ColorCircle = {
-        let circle = ColorCircle(color: .yellow)
+    private lazy var colorCircle: UIColorCircleView = {
+        let circle = UIColorCircleView(color: .yellow)
         circle.translatesAutoresizingMaskIntoConstraints = false
         circle.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(colorCircleTapped))
@@ -177,7 +177,7 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveButtonTapped(sender: AnyObject) {
         print("Save button tapped")
         //self.colorCircle.color = .red
-        self.colorCircle.updateColor()
+        self.colorCircle.updateColor(color: .yellow)
         self.colorPicker.isHidden = false
         self.colorSave.isHidden = false
     }
@@ -189,8 +189,7 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didTapColorSave(sender: AnyObject) {
         let currentColorIndex = customColor.allValues[self.colorPicker.selectedRow(inComponent: 0)]
         let currentColor = UIColor(named: currentColorIndex.rawValue) ?? .black
-        self.colorCircle.color = currentColor
-        self.colorCircle.updateColor()
+        self.colorCircle.updateColor(color: currentColor)
         self.colorPicker.isHidden = true
         self.colorSave.isHidden = true
     }
@@ -221,7 +220,7 @@ extension HabitCreateViewController: UIPickerViewDataSource, UIPickerViewDelegat
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         //print(customColor.allValues[row].rawValue)
         self.colorCircle.color = UIColor(named: customColor.allValues[row].rawValue) ?? .black
-        self.colorCircle.updateColor()
+        self.colorCircle.updateColor(color: .black)
         return customColor.allValues[row].rawValue
     }
 }

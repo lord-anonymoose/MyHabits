@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ColorPickerView: UIView {
+class UIColorPickerView: UIView {
 
     // MARK: - Subviews
 
@@ -16,16 +16,14 @@ class ColorPickerView: UIView {
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.dataSource = self
         picker.delegate = self
-        //picker.isHidden = true
         return picker
     }()
     
-    private lazy var colorSave: UIButton = {
+    public lazy var colorSave: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Save", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        //button.isHidden = true
-        button.addTarget(self, action: #selector(didTapColorSave), for: .touchUpInside)
+        button.backgroundColor = .green
         return button
     }()
     
@@ -56,27 +54,33 @@ class ColorPickerView: UIView {
     }
     
     private func addSubviews() {
-        //self.isUserInteractionEnabled = false
         addSubview(colorSave)
         addSubview(colorPicker)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            colorPicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            colorPicker.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            colorPicker.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            colorPicker.heightAnchor.constraint(equalToConstant: 240),
+
             colorSave.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            colorSave.topAnchor.constraint(equalTo: bottomAnchor, constant: -64),
             colorSave.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            colorSave.topAnchor.constraint(equalTo: colorPicker.bottomAnchor, constant: 8),
             colorSave.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            
-            colorPicker.leadingAnchor.constraint(equalTo: leadingAnchor),
-            colorPicker.topAnchor.constraint(equalTo: bottomAnchor, constant: -256),
-            colorPicker.trailingAnchor.constraint(equalTo: trailingAnchor),
-            colorPicker.bottomAnchor.constraint(equalTo: colorSave.topAnchor, constant: -16)
         ])
+    }
+    
+    public func getColor() -> UIColor {
+        let currentColorIndex = customColor.allValues[self.colorPicker.selectedRow(inComponent: 0)]
+        let currentColor = UIColor(named: currentColorIndex.rawValue) ?? .black
+        print(currentColor)
+        return currentColor
     }
 }
 
-extension ColorPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
+extension UIColorPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -98,7 +102,7 @@ extension ColorPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 }
 
-extension ColorPickerView {
+extension UIColorPickerView {
     func setIsHidden(_ hidden: Bool, animated: Bool) {
         if animated {
             if self.isHidden && !hidden {
