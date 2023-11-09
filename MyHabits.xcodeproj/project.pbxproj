@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8E6C48CD2AF997BF00D56CDD /* HabitCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */; };
 		8E6C48CF2AF997C800D56CDD /* HabitEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */; };
+		8E7B40902AFD459E0058FE55 /* UITimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7B408F2AFD459E0058FE55 /* UITimePickerView.swift */; };
 		8EB8760C2AF583FC0057ECEF /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760B2AF583FC0057ECEF /* HabitsStore.swift */; };
 		8EB8760E2AF5848C0057ECEF /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */; };
 		8EB876102AF584FB0057ECEF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8760F2AF584FB0057ECEF /* InfoViewController.swift */; };
@@ -19,15 +20,15 @@
 		8ED2CA742AF57E3D00808041 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED2CA722AF57E3D00808041 /* LaunchScreen.storyboard */; };
 		8EFA22CB2AFACAD30072E89A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22CA2AFACAD30072E89A /* TestViewController.swift */; };
 		8EFA22CD2AFACB4C0072E89A /* UIColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22CC2AFACB4C0072E89A /* UIColorPickerView.swift */; };
-		8EFA22CF2AFAD99C0072E89A /* HabitFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22CE2AFAD99C0072E89A /* HabitFormView.swift */; };
 		8EFA22D12AFCEF330072E89A /* UIColorCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22D02AFCEF330072E89A /* UIColorCircleView.swift */; };
 		8EFA22D32AFCEFD60072E89A /* UITextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22D22AFCEFD60072E89A /* UITextFieldWithPadding.swift */; };
-		8EFA22D52AFCF06C0072E89A /* customColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22D42AFCF06C0072E89A /* customColor.swift */; };
+		8EFA22D52AFCF06C0072E89A /* СustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22D42AFCF06C0072E89A /* СustomColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreateViewController.swift; sourceTree = "<group>"; };
 		8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditViewController.swift; sourceTree = "<group>"; };
+		8E7B408F2AFD459E0058FE55 /* UITimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITimePickerView.swift; sourceTree = "<group>"; };
 		8EB8760B2AF583FC0057ECEF /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
 		8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		8EB8760F2AF584FB0057ECEF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -40,10 +41,9 @@
 		8ED2CA752AF57E3D00808041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EFA22CA2AFACAD30072E89A /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		8EFA22CC2AFACB4C0072E89A /* UIColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorPickerView.swift; sourceTree = "<group>"; };
-		8EFA22CE2AFAD99C0072E89A /* HabitFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormView.swift; sourceTree = "<group>"; };
 		8EFA22D02AFCEF330072E89A /* UIColorCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorCircleView.swift; sourceTree = "<group>"; };
 		8EFA22D22AFCEFD60072E89A /* UITextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldWithPadding.swift; sourceTree = "<group>"; };
-		8EFA22D42AFCF06C0072E89A /* customColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customColor.swift; sourceTree = "<group>"; };
+		8EFA22D42AFCF06C0072E89A /* СustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СustomColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,6 @@
 				8EFA22CA2AFACAD30072E89A /* TestViewController.swift */,
 				8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */,
 				8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */,
-				8EFA22CE2AFAD99C0072E89A /* HabitFormView.swift */,
 			);
 			path = Habit;
 			sourceTree = "<group>";
@@ -147,6 +146,7 @@
 			children = (
 				8EFA22D02AFCEF330072E89A /* UIColorCircleView.swift */,
 				8EFA22CC2AFACB4C0072E89A /* UIColorPickerView.swift */,
+				8E7B408F2AFD459E0058FE55 /* UITimePickerView.swift */,
 				8EFA22D22AFCEFD60072E89A /* UITextFieldWithPadding.swift */,
 			);
 			path = Interface;
@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				8EB8760B2AF583FC0057ECEF /* HabitsStore.swift */,
-				8EFA22D42AFCF06C0072E89A /* customColor.swift */,
+				8EFA22D42AFCF06C0072E89A /* СustomColor.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -233,12 +233,12 @@
 			files = (
 				8EFA22CB2AFACAD30072E89A /* TestViewController.swift in Sources */,
 				8EB8760C2AF583FC0057ECEF /* HabitsStore.swift in Sources */,
-				8EFA22D52AFCF06C0072E89A /* customColor.swift in Sources */,
+				8EFA22D52AFCF06C0072E89A /* СustomColor.swift in Sources */,
 				8ED2CA6C2AF57E3B00808041 /* TabBarViewController.swift in Sources */,
 				8ED2CA682AF57E3B00808041 /* AppDelegate.swift in Sources */,
-				8EFA22CF2AFAD99C0072E89A /* HabitFormView.swift in Sources */,
 				8EB8760E2AF5848C0057ECEF /* HabitsViewController.swift in Sources */,
 				8EFA22D32AFCEFD60072E89A /* UITextFieldWithPadding.swift in Sources */,
+				8E7B40902AFD459E0058FE55 /* UITimePickerView.swift in Sources */,
 				8EFA22D12AFCEF330072E89A /* UIColorCircleView.swift in Sources */,
 				8E6C48CD2AF997BF00D56CDD /* HabitCreateViewController.swift in Sources */,
 				8EFA22CD2AFACB4C0072E89A /* UIColorPickerView.swift in Sources */,

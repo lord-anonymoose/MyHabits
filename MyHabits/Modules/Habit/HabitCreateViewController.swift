@@ -7,34 +7,35 @@
 
 import UIKit
 
-class HabitCreateViewController: UIViewController, UITextFieldDelegate {
+class HabitCreateViewController: UIViewController {
     
     // MARK: - Subviews
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "TITLE"
         label.font = .boldSystemFont(ofSize: 16)
         label.textColor = UIColor(named: "textColor")
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var titleTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var titleTextField: UITextFieldWithLimitedActions = {
+        let textField = UITextFieldWithLimitedActions()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocorrectionType = .no
         textField.placeholder = "Morning jogging, 8 hours sleep etc..."
         textField.font = .systemFont(ofSize: 16)
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         return textField
     }()
     
     private lazy var colorLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "COLOR"
         label.font = .boldSystemFont(ofSize: 16)
         label.textColor = UIColor(named: "textColor")
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -53,28 +54,15 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         pickerView.colorSave.addTarget(self, action: #selector(didTapColorSave), for: .touchUpInside)
         pickerView.isHidden = true
         pickerView.alpha = 0.0
-        //pickerView.colorPicker
         return pickerView
     }()
     
-    // MARK: - Actions
-    
-    @IBAction func colorCircleTapped(sender: AnyObject) {
-        colorPickerView.setIsHidden(false, animated: true)
-    }
-    
-    @IBAction func didTapColorSave(sender: AnyObject) {
-        let color = colorPickerView.getColor()
-        colorCircle.updateColor(color: color)
-        colorPickerView.setIsHidden(true, animated: true)
-    }
-    
     private lazy var timeLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "TIME"
         label.font = .boldSystemFont(ofSize: 16)
         label.textColor = UIColor(named: "textColor")
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -99,11 +87,35 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    // MARK: - Actions
+    
+    @IBAction func colorCircleTapped(sender: AnyObject) {
+        colorPickerView.setIsHidden(false, animated: true)
+    }
+    
+    @IBAction func didTapColorSave(sender: AnyObject) {
+        let color = colorPickerView.getColor()
+        colorCircle.updateColor(color: color)
+        colorPickerView.setIsHidden(true, animated: true)
+    }
+    
+    @IBAction func saveButtonTapped(sender: AnyObject) {
+        print("Save button tapped")
+    }
+    
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+        print("Cancel button tapped")
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        
         colorPickerView.delegate = self
+        titleTextField.delegate = self
+        
         setupUI()
         setupNavigationBar()
         addSubviews()
@@ -164,13 +176,13 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
     private func setupNavigationBar() {
         self.navigationItem.title = "Create a habit"
         
-        //let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
-        //saveButton.tintColor = UIColor(named: "Electric Violet") ?? .blue
-        //let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
-        //cancelButton.tintColor = UIColor(named: "Electric Violet") ?? .blue
+        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
+        saveButton.tintColor = UIColor(named: "Electric Violet") ?? .blue
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        cancelButton.tintColor = UIColor(named: "Electric Violet") ?? .blue
         
-        //navigationItem.rightBarButtonItems = [saveButton]
-        //navigationItem.leftBarButtonItems = [cancelButton]
+        navigationItem.rightBarButtonItems = [saveButton]
+        navigationItem.leftBarButtonItems = [cancelButton]
     }
     
     // Setting character limit for UITextField (48 characters)
@@ -188,18 +200,39 @@ extension HabitCreateViewController: UIPickerViewDataSource, UIPickerViewDelegat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return customColor.allValues.count
+        return СustomColor.allValues.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        self.colorCircle.color = UIColor(named: customColor.allValues[row].rawValue) ?? .black
-        self.colorCircle.updateColor(color: .black)
-        return customColor.allValues[row].rawValue
+        return СustomColor.allValues[row].rawValue
     }
 }
 
 extension HabitCreateViewController: ColorPickerDelegate {
     func colorPickerValueChanged(newColor:UIColor) {
         colorCircle.updateColor(color: newColor)
+    }
+}
+
+extension HabitCreateViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        colorPickerView.setIsHidden(true, animated: true)
+        print("colorPickerView got hidden")
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

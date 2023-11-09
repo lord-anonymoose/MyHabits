@@ -5,6 +5,8 @@
 //  Created by Philipp Lazarev on 07.11.2023.
 //
 
+// UIColorPickerView contains UIPicker for changing color and a save button
+
 import UIKit
 
 protocol ColorPickerDelegate:AnyObject {
@@ -21,24 +23,20 @@ class UIColorPickerView: UIView {
             delegate?.colorPickerValueChanged(newColor: currentColor)
         }
     }
-
-    //public var currentColor: UIColor = UIColor(named: "Blue Ribbon") ?? .black
     
     private lazy var colorPicker: UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.dataSource = self
         picker.delegate = self
-        //picker.isHidden = true
         return picker
     }()
     
     public lazy var colorSave: UIButton = {
-        let button = UIButton(type: .system)
+        let button = UIButton(configuration: .gray())
+        button.layer.cornerRadius = 8
         button.setTitle("Save", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .green
-        //button.isHidden = true
         return button
     }()
     
@@ -88,9 +86,8 @@ class UIColorPickerView: UIView {
     }
     
     public func getColor() -> UIColor {
-        let colorIndex = customColor.allValues[self.colorPicker.selectedRow(inComponent: 0)]
+        let colorIndex = СustomColor.allValues[self.colorPicker.selectedRow(inComponent: 0)]
         let color = UIColor(named: colorIndex.rawValue) ?? .black
-        print(color)
         return color
     }
 }
@@ -101,25 +98,22 @@ extension UIColorPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return customColor.allValues.count
+        return СustomColor.allValues.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        //print(customColor.allValues[row].rawValue)
-        return customColor.allValues[row].rawValue
+        return СustomColor.allValues[row].rawValue
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        let rawValue = customColor.allValues[row].rawValue
+        let rawValue = СustomColor.allValues[row].rawValue
         let color = UIColor(named: rawValue)
         self.currentColor = color ?? .black
-        print(self.currentColor)
-        //print(self.currentColor)
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = customColor.allValues[row].rawValue
+        let titleData = СustomColor.allValues[row].rawValue
         let attribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "textColor") ?? .label ]
         let myTitle = NSAttributedString(string: titleData, attributes: attribute)
         return myTitle
@@ -133,7 +127,7 @@ extension UIColorPickerView {
                 self.alpha = 0.0
                 self.isHidden = false
             }
-            UIView.animate(withDuration: 0.50, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.alpha = hidden ? 0.0 : 1.0
             }) { (complete) in
                 self.isHidden = hidden
