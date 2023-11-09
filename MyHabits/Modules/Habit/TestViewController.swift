@@ -68,6 +68,5 @@ class TestViewController: UIViewController {
         let color = colorPickerView.getColor()
         colorCircle.updateColor(color: color)
         colorPickerView.isHidden = true
-        print(color)
     }
 }

@@ -126,8 +126,8 @@
 			children = (
 				8EB876122AF5863B0057ECEF /* Delegates */,
 				8EB876112AF586230057ECEF /* Modules */,
-				8EB876132AF5865E0057ECEF /* Assets */,
 				8EFFEECF2AF58DDD006EBB58 /* Extensions */,
+				8EB876132AF5865E0057ECEF /* Assets */,
 				8ED2CA752AF57E3D00808041 /* Info.plist */,
 			);
 			path = MyHabits;

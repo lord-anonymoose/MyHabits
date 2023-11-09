@@ -8,7 +8,12 @@
 import UIKit
 
 class UIColorCircleView: UIView {
+
+    // MARK: - Subviews and Variables
+
     var color: UIColor
+
+    // MARK: - Lifecycle
 
     init(color:UIColor){
         self.color = color
@@ -28,6 +33,8 @@ class UIColorCircleView: UIView {
         self.clipsToBounds = true
     }
     
+    // MARK: - Public
+
     public func updateColor(color: UIColor) {
         self.color = color
         self.backgroundColor = self.color

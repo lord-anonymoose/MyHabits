@@ -7,15 +7,29 @@
 
 import UIKit
 
+protocol ColorPickerDelegate:AnyObject {
+    func colorPickerValueChanged(newColor:UIColor)
+}
+
 class UIColorPickerView: UIView {
 
     // MARK: - Subviews
 
+    weak var delegate:ColorPickerDelegate?
+    var currentColor = UIColor(named: "Blue Ribbon") ?? .black {
+        didSet {
+            delegate?.colorPickerValueChanged(newColor: currentColor)
+        }
+    }
+
+    //public var currentColor: UIColor = UIColor(named: "Blue Ribbon") ?? .black
+    
     private lazy var colorPicker: UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.dataSource = self
         picker.delegate = self
+        //picker.isHidden = true
         return picker
     }()
     
@@ -24,6 +38,7 @@ class UIColorPickerView: UIView {
         button.setTitle("Save", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .green
+        //button.isHidden = true
         return button
     }()
     
@@ -73,10 +88,10 @@ class UIColorPickerView: UIView {
     }
     
     public func getColor() -> UIColor {
-        let currentColorIndex = customColor.allValues[self.colorPicker.selectedRow(inComponent: 0)]
-        let currentColor = UIColor(named: currentColorIndex.rawValue) ?? .black
-        print(currentColor)
-        return currentColor
+        let colorIndex = customColor.allValues[self.colorPicker.selectedRow(inComponent: 0)]
+        let color = UIColor(named: colorIndex.rawValue) ?? .black
+        print(color)
+        return color
     }
 }
 
@@ -90,8 +105,17 @@ extension UIColorPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print(customColor.allValues[row].rawValue)
+        //print(customColor.allValues[row].rawValue)
         return customColor.allValues[row].rawValue
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        let rawValue = customColor.allValues[row].rawValue
+        let color = UIColor(named: rawValue)
+        self.currentColor = color ?? .black
+        print(self.currentColor)
+        //print(self.currentColor)
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
