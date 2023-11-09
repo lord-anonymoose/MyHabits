@@ -5,7 +5,7 @@
 //  Created by Philipp Lazarev on 09.11.2023.
 //
 
-enum customColor: String {
+enum СustomColor: String {
     case blueRibbon = "Blue Ribbon"
     case electricViolet = "Electric Violet"
     case forestGreen = "Forest Green"

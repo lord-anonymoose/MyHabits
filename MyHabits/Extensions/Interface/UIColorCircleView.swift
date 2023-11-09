@@ -5,6 +5,8 @@
 //  Created by Philipp Lazarev on 09.11.2023.
 //
 
+// UIColorCircleView is as a circle showing a color set for selected habit
+
 import UIKit
 
 class UIColorCircleView: UIView {

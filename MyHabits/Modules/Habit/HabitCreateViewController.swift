@@ -7,34 +7,35 @@
 
 import UIKit
 
-class HabitCreateViewController: UIViewController, UITextFieldDelegate {
+class HabitCreateViewController: UIViewController {
     
     // MARK: - Subviews
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "TITLE"
         label.font = .boldSystemFont(ofSize: 16)
         label.textColor = UIColor(named: "textColor")
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var titleTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var titleTextField: UITextFieldWithLimitedActions = {
+        let textField = UITextFieldWithLimitedActions()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocorrectionType = .no
         textField.placeholder = "Morning jogging, 8 hours sleep etc..."
         textField.font = .systemFont(ofSize: 16)
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         return textField
     }()
     
     private lazy var colorLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "COLOR"
         label.font = .boldSystemFont(ofSize: 16)
         label.textColor = UIColor(named: "textColor")
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -50,42 +51,28 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
     private lazy var colorPickerView: UIColorPickerView = {
         let pickerView = UIColorPickerView()
         pickerView.translatesAutoresizingMaskIntoConstraints = false
-        pickerView.colorSave.addTarget(self, action: #selector(didTapColorSave), for: .touchUpInside)
         pickerView.isHidden = true
         pickerView.alpha = 0.0
-        //pickerView.colorPicker
         return pickerView
     }()
     
-    // MARK: - Actions
-    
-    @IBAction func colorCircleTapped(sender: AnyObject) {
-        colorPickerView.setIsHidden(false, animated: true)
-    }
-    
-    @IBAction func didTapColorSave(sender: AnyObject) {
-        let color = colorPickerView.getColor()
-        colorCircle.updateColor(color: color)
-        colorPickerView.setIsHidden(true, animated: true)
-    }
-    
     private lazy var timeLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "TIME"
         label.font = .boldSystemFont(ofSize: 16)
         label.textColor = UIColor(named: "textColor")
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var timeSelection: UIButton = {
+    private lazy var timeButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         let firstAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "textColor") ?? .label ]
         let firstString = NSAttributedString(string: "Daily at ", attributes: firstAttribute)
 
-        let secondAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "electricViolet") ?? .link]
+        let secondAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "Electric Violet") ?? .link]
         let secondString = NSAttributedString(string: "15:00", attributes: secondAttribute)
 
         let resultString = NSMutableAttributedString()
@@ -95,15 +82,68 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         button.setAttributedTitle(resultString, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16)
         button.contentHorizontalAlignment = .left
+                
+        button.addTarget(self, action: #selector(timeButtonTapped), for: .touchUpInside)
         
         return button
     }()
+    
+    private lazy var timePickerView: UITimePickerView = {
+        let timePickerView = UITimePickerView()
+        timePickerView.translatesAutoresizingMaskIntoConstraints = false
+        timePickerView.isHidden = true
+        return timePickerView
+    }()
+    
+    // MARK: - Actions
+    
+    @IBAction func colorCircleTapped(sender: AnyObject) {
+        if !timePickerView.isHidden {
+            timePickerView.setIsHidden(true, animated: true)
+        }
+        colorPickerView.setIsHidden(false, animated: true)
+    }
+    
+    @IBAction func timeButtonTapped(sender: AnyObject) {
+        if !colorPickerView.isHidden {
+            colorPickerView.setIsHidden(true, animated: true)
+        }
+        timePickerView.setIsHidden(false, animated: true)
+    }
+    
+    @IBAction func saveButtonTapped(sender: AnyObject) {
+        let name = titleTextField.text!
+        
+        let dateString = timeButton.currentAttributedTitle?.string ?? "Daily at 15:00"
+        let dateStringCleared = dateString.replacingOccurrences(of: "Daily at ", with: "")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "HH:mm"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        let date = dateFormatter.date(from: dateStringCleared)!
+                
+        let color = colorCircle.color
+        let newHabit = Habit(name: name, date: date, color: color)
+        
+        HabitsStore.shared.habits.append(newHabit)
+        print("Save button tapped")
+        print(HabitsStore.shared.habits.count)
+        
+    }
+    
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+        print("Cancel button tapped")
+    }
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        
         colorPickerView.delegate = self
+        timePickerView.delegate = self
+        titleTextField.delegate = self
+        
         setupUI()
         setupNavigationBar()
         addSubviews()
@@ -123,6 +163,8 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(colorCircle)
         view.addSubview(colorPickerView)
         view.addSubview(timeLabel)
+        view.addSubview(timeButton)
+        view.addSubview(timePickerView)
     }
     
     private func setupConstraints() {
@@ -154,23 +196,33 @@ class HabitCreateViewController: UIViewController, UITextFieldDelegate {
             timeLabel.topAnchor.constraint(equalTo: colorCircle.bottomAnchor, constant: 16),
             timeLabel.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
             
+            timeButton.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
+            timeButton.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
+            timeButton.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 16),
+            timeButton.heightAnchor.constraint(equalToConstant: 32),
+            
+            timePickerView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            timePickerView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            timePickerView.topAnchor.constraint(equalTo: timeButton.bottomAnchor, constant: 16),
+            timePickerView.heightAnchor.constraint(equalToConstant: 120),
+            
             colorPickerView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
             colorPickerView.heightAnchor.constraint(equalToConstant: 320),
             colorPickerView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
-            colorPickerView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+            colorPickerView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor)
         ])
     }
     
     private func setupNavigationBar() {
         self.navigationItem.title = "Create a habit"
         
-        //let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
-        //saveButton.tintColor = UIColor(named: "Electric Violet") ?? .blue
-        //let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
-        //cancelButton.tintColor = UIColor(named: "Electric Violet") ?? .blue
+        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
+        saveButton.tintColor = UIColor(named: "Electric Violet") ?? .blue
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        cancelButton.tintColor = UIColor(named: "Electric Violet") ?? .blue
         
-        //navigationItem.rightBarButtonItems = [saveButton]
-        //navigationItem.leftBarButtonItems = [cancelButton]
+        navigationItem.rightBarButtonItems = [saveButton]
+        navigationItem.leftBarButtonItems = [cancelButton]
     }
     
     // Setting character limit for UITextField (48 characters)
@@ -188,18 +240,49 @@ extension HabitCreateViewController: UIPickerViewDataSource, UIPickerViewDelegat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return customColor.allValues.count
+        return СustomColor.allValues.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        self.colorCircle.color = UIColor(named: customColor.allValues[row].rawValue) ?? .black
-        self.colorCircle.updateColor(color: .black)
-        return customColor.allValues[row].rawValue
+        return СustomColor.allValues[row].rawValue
     }
 }
 
 extension HabitCreateViewController: ColorPickerDelegate {
     func colorPickerValueChanged(newColor:UIColor) {
         colorCircle.updateColor(color: newColor)
+    }
+}
+
+extension HabitCreateViewController: TimePickerDelegate {
+    func timePickerValueChanged(newTime:NSAttributedString) {
+        timeButton.setAttributedTitle(newTime, for: .normal)
+    }
+}
+
+extension HabitCreateViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if !colorPickerView.isHidden {
+            colorPickerView.setIsHidden(true, animated: true)
+        }
+        if !timePickerView.isHidden {
+            timePickerView.setIsHidden(true, animated: true)
+        }
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
