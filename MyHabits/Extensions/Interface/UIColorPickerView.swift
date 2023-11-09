@@ -32,7 +32,7 @@ class UIColorPickerView: UIView {
         return picker
     }()
     
-    public lazy var colorSave: UIButton = {
+    public lazy var saveButton: UIButton = {
         let button = UIButton(configuration: .gray())
         button.layer.cornerRadius = 8
         button.setTitle("Save", for: .normal)
@@ -63,11 +63,10 @@ class UIColorPickerView: UIView {
 
     private func setupUI() {
         self.backgroundColor = .systemBackground
-        setIsHidden(false, animated: true)
     }
     
     private func addSubviews() {
-        addSubview(colorSave)
+        addSubview(saveButton)
         addSubview(colorPicker)
     }
     
@@ -78,10 +77,11 @@ class UIColorPickerView: UIView {
             colorPicker.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             colorPicker.heightAnchor.constraint(equalToConstant: 240),
 
-            colorSave.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            colorSave.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            colorSave.topAnchor.constraint(equalTo: colorPicker.bottomAnchor, constant: 8),
-            colorSave.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            saveButton.topAnchor.constraint(equalTo: colorPicker.bottomAnchor, constant: 8),
+            saveButton.heightAnchor.constraint(equalToConstant: 40)
+            //saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
         ])
     }
     

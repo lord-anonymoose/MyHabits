@@ -51,7 +51,7 @@ class HabitCreateViewController: UIViewController {
     private lazy var colorPickerView: UIColorPickerView = {
         let pickerView = UIColorPickerView()
         pickerView.translatesAutoresizingMaskIntoConstraints = false
-        pickerView.colorSave.addTarget(self, action: #selector(didTapColorSave), for: .touchUpInside)
+        pickerView.saveButton.addTarget(self, action: #selector(didTapColorSave), for: .touchUpInside)
         pickerView.isHidden = true
         pickerView.alpha = 0.0
         return pickerView
