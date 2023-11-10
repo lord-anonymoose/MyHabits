@@ -85,14 +85,14 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
-		8EB876112AF586230057ECEF /* Modules */ = {
+		8EB876112AF586230057ECEF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				8ED2CA6B2AF57E3B00808041 /* TabBarViewController.swift */,
 				8E6C48D02AF9980400D56CDD /* Habit */,
 				8E6C48D12AF9981900D56CDD /* Info */,
 			);
-			path = Modules;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		8EB876122AF5863B0057ECEF /* Delegates */ = {
@@ -133,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				8EB876122AF5863B0057ECEF /* Delegates */,
-				8EB876112AF586230057ECEF /* Modules */,
+				8EB876112AF586230057ECEF /* ViewControllers */,
 				8EFFEECF2AF58DDD006EBB58 /* Extensions */,
 				8EB876132AF5865E0057ECEF /* Assets */,
 				8ED2CA752AF57E3D00808041 /* Info.plist */,

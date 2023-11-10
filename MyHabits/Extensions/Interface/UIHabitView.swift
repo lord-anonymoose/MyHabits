@@ -10,26 +10,27 @@ import UIKit
 class UIHabitView: UIView {
     // MARK: - Subviews
     
+    var name: String
+    var time: String
+    var color: UIColor
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Jogging"
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = UIColor(named: "Electric Violet")
         return label
     }()
     
     let timeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Daily at 10:00"
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = UIColor(named: "textColor")
         return label
     }()
     
     let tickButton: UITickButton = {
-        let button = UITickButton(color: .green, isTicked: true)
+        let button = UITickButton(isTicked: true)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
         return button
@@ -37,32 +38,17 @@ class UIHabitView: UIView {
     
     
     // MARK: - Lifecycle
-/*
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, author: String, image: String, description: String, likes: Int, views: Int) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubviews(author: author, image: image, description: description, likes: likes, views: views)
-        setupConstraints()
-    }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubviews(author: "Unknown", image: "notFound", description: "Unknown", likes: 0, views: 0)
-        setupConstraints()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        addSubviews(author: "Unknown", image: "notFound", description: "Unknown", likes: 0, views: 0)
-        setupConstraints()
-    }
- */
-    init() {
+
+    init(name:String, time: String, color: UIColor){
+        self.name = name
+        self.time = time
+        self.color = color
         super.init(frame: .zero)
         setupUI()
         addSubviews()
         setupConstraints()
     }
-    
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -76,6 +62,10 @@ class UIHabitView: UIView {
         addSubview(titleLabel)
         addSubview(timeLabel)
         addSubview(tickButton)
+        titleLabel.text = self.name
+        titleLabel.textColor = self.color
+        timeLabel.text = "Daily at \(String(self.time))"
+        tickButton.tintColor = self.color
     }
     
     private func setupConstraints() {

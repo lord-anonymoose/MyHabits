@@ -200,7 +200,6 @@ public final class HabitsStore {
 }
 
 private extension Date {
-    
     static func dates(from fromDate: Date, to toDate: Date) -> [Date] {
         var dates: [Date] = []
         var date = fromDate
@@ -215,3 +214,16 @@ private extension Date {
         return dates
     }
 }
+
+/*
+ extension Date {
+ func toLabel() {
+ let dateString = timeButton.currentAttributedTitle?.string ?? "Daily at 15:00"
+ let dateStringCleared = dateString.replacingOccurrences(of: "Daily at ", with: "")
+ let dateFormatter = DateFormatter()
+ dateFormatter.dateFormat =  "HH:mm"
+ dateFormatter.locale = Locale(identifier: "ru_RU")
+ let date = dateFormatter.date(from: dateStringCleared)!
+ }
+ }
+ */
