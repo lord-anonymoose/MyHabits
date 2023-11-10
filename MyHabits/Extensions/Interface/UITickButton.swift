@@ -17,15 +17,11 @@ class UITickButton: UIButton {
 
     init(isTicked:Bool){
         self.isTicked = isTicked
-        
         super.init(frame: .zero)
-        
         updateTick()
         self.contentVerticalAlignment = .fill
         self.contentHorizontalAlignment = .fill
-
         layoutSubviews()
-        
         self.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
     }
 

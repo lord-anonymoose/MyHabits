@@ -11,6 +11,5 @@ enum СustomColor: String {
     case forestGreen = "Forest Green"
     case neonCarrot = "Neon Carrot"
     case royalBlue = "Royal Blue"
-    
     static let allValues = [blueRibbon, electricViolet, forestGreen, neonCarrot, royalBlue]
 }

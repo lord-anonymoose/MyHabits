@@ -127,7 +127,6 @@ class HabitCreateViewController: UIViewController {
         HabitsStore.shared.habits.append(newHabit)
         print("Save button tapped")
         print(HabitsStore.shared.habits.count)
-        
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {

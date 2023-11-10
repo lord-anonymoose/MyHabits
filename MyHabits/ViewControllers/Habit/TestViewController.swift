@@ -57,7 +57,7 @@ class TestViewController: UIViewController {
             habitView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
             habitView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
             habitView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
-            habitView.heightAnchor.constraint(equalToConstant: 144)
+            //habitView.heightAnchor.constraint(equalToConstant: 144)
         ])
     }
     

@@ -100,9 +100,7 @@ class UITimePickerView: UIView {
             saveButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
-}
-
-extension UITimePickerView {
+    
     private func timeToString(time: String) -> NSMutableAttributedString {
         let firstAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "textColor") ?? .label ]
         let firstString = NSAttributedString(string: "Daily at ", attributes: firstAttribute)
@@ -117,4 +115,3 @@ extension UITimePickerView {
         return resultString
     }
 }
-

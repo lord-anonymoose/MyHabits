@@ -8,6 +8,7 @@
 import UIKit
 
 class UIHabitView: UIView {
+    
     // MARK: - Subviews
     
     var name: String
@@ -35,7 +36,6 @@ class UIHabitView: UIView {
         button.isUserInteractionEnabled = true
         return button
     }()
-    
     
     // MARK: - Lifecycle
 
@@ -70,6 +70,8 @@ class UIHabitView: UIView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: 144),
+            
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
