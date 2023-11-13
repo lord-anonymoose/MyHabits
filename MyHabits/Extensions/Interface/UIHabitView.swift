@@ -57,10 +57,17 @@ class UIHabitView: UIView {
         setupUI()
         addSubviews()
         setupConstraints()
+        setupDependencies()
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    @IBAction func updateHabit(sender: UIButton) {
+        print("Habit updated")
+        HabitsStore.shared.track(habit)
     }
     
     // MARK: - Private
@@ -97,6 +104,10 @@ class UIHabitView: UIView {
             tickButton.topAnchor.constraint(equalTo: topAnchor, constant: 48),
             tickButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -48)
         ])
+    }
+    
+    private func setupDependencies() {
+        tickButton.addTarget(self, action: #selector(updateHabit), for: .touchUpInside)
     }
 }
 
