@@ -15,7 +15,6 @@ class UIHabitView: UIView {
             titleLabel.text = habit.name
             
             let date = habit.date
-            var calendar = Calendar.current
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat =  "HH:mm"
             let time = dateFormatter.string(from: date)

@@ -95,6 +95,30 @@ class HabitCreateViewController: UIViewController {
         return timePickerView
     }()
     
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        
+        colorPickerView.delegate = self
+        timePickerView.delegate = self
+        titleTextField.delegate = self
+        
+        setupUI()
+        setupNavigationBar()
+        addSubviews()
+        setupConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     // MARK: - Actions
     
     @IBAction func colorCircleTapped(sender: AnyObject) {
@@ -132,30 +156,6 @@ class HabitCreateViewController: UIViewController {
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    // MARK: - Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
-        
-        colorPickerView.delegate = self
-        timePickerView.delegate = self
-        titleTextField.delegate = self
-        
-        setupUI()
-        setupNavigationBar()
-        addSubviews()
-        setupConstraints()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
     }
     
     // MARK: - Private

@@ -23,7 +23,7 @@ class TabBarViewController: UITabBarController {
         habitsNavigationController.topViewController?.title = "Today"
         habitsNavigationController.tabBarItem = UITabBarItem(title: "Habits", image: UIImage(systemName: "rectangle.grid.1x2.fill"), tag: 0)
         
-        let infoNavigationController = UINavigationController(rootViewController: InfoViewController())
+        let infoNavigationController = UINavigationController(rootViewController: HabitEditViewController())
         infoNavigationController.navigationBar.prefersLargeTitles = false
         infoNavigationController.topViewController?.title = "Info"
         infoNavigationController.tabBarItem = UITabBarItem(title: "Habits", image: UIImage(systemName: "info.circle.fill"), tag: 1)
