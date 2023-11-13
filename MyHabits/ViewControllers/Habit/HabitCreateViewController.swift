@@ -98,6 +98,7 @@ class HabitCreateViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func colorCircleTapped(sender: AnyObject) {
+        self.view.endEditing(true)
         if !timePickerView.isHidden {
             timePickerView.setIsHidden(true, animated: true)
         }
@@ -125,12 +126,12 @@ class HabitCreateViewController: UIViewController {
         let newHabit = Habit(name: name, date: date, color: color)
         
         HabitsStore.shared.habits.append(newHabit)
-        print("Save button tapped")
         print(HabitsStore.shared.habits.count)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
-        print("Cancel button tapped")
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Lifecycle
@@ -147,6 +148,14 @@ class HabitCreateViewController: UIViewController {
         setupNavigationBar()
         addSubviews()
         setupConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     // MARK: - Private

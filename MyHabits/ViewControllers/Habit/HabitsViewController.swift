@@ -29,10 +29,17 @@ class HabitsViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        habitsView.reloadData()
+    }
+    
     // MARK: - Actions
     
     @IBAction func addButtonTapped(sender: AnyObject) {
         print("Add button tapped")
+        let habitsCreateViewController = HabitCreateViewController()
+        self.navigationController?.pushViewController(habitsCreateViewController, animated: true)
     }
     
     // MARK: - Private
@@ -43,15 +50,6 @@ class HabitsViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        
-        //let firstHabit = Habit(name: "Wake up at 6", date: dateFormatter.date(from: "06:00")!, color: UIColor(named: "Neon Carrot")!)
-        //HabitsStore.shared.habits.append(firstHabit)
-        
-        //let secondHabit = Habit(name: "Go to bad at 22", date: dateFormatter.date(from: "22:00")!, color: UIColor(named: "Neon Carrot")!)
-        //HabitsStore.shared.habits.append(secondHabit)
-        
-        print(HabitsStore.shared.habits)
-
     }
     
     func setupNavigationBar() {
