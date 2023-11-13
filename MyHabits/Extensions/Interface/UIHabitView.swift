@@ -13,7 +13,14 @@ class UIHabitView: UIView {
     var habit: Habit {
         didSet {
             titleLabel.text = habit.name
-            timeLabel.text = "Daily at \(habit.date)"
+            
+            let date = habit.date
+            var calendar = Calendar.current
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat =  "HH:mm"
+            let time = dateFormatter.string(from: date)
+            
+            timeLabel.text = "Daily at \(time)"
             titleLabel.textColor = habit.color
             tickButton.tintColor = habit.color
             tickButton.isTicked = habit.isAlreadyTakenToday

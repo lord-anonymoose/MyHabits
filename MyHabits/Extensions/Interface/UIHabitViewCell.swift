@@ -11,10 +11,10 @@ class UIHabitViewCell: UITableViewCell {
 
     // MARK: - Subviews
     let habitView: UIHabitView = {
+        // Making default habit for UIHabitView
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        
         let habit = Habit(name: "Example", date: dateFormatter.date(from: "09:00")!, trackDates: [], color: .blueRibbon)
         let view = UIHabitView(habit: habit)
         view.layer.cornerRadius = 8
