@@ -10,29 +10,13 @@ import UIKit
 class UIHabitView: UIView {
     
     // MARK: - Subviews
-    
-    var name: String {
+    var habit: Habit {
         didSet {
-            titleLabel.text = name
-        }
-    }
-    
-    var time: String {
-        didSet {
-            timeLabel.text = "Daily at \(time)"
-        }
-    }
-    
-    var color: UIColor {
-        didSet {
-            titleLabel.textColor = color
-            tickButton.tintColor = color
-        }
-    }
-    
-    var isTicked: Bool {
-        didSet {
-            tickButton.isTicked = isTicked
+            titleLabel.text = habit.name
+            timeLabel.text = "Daily at \(habit.date)"
+            titleLabel.textColor = habit.color
+            tickButton.tintColor = habit.color
+            tickButton.isTicked = habit.isAlreadyTakenToday
         }
     }
     
@@ -60,11 +44,8 @@ class UIHabitView: UIView {
     
     // MARK: - Lifecycle
 
-    init(name:String, time: String, color: UIColor, isTicked: Bool){
-        self.name = name
-        self.time = time
-        self.color = color
-        self.isTicked = isTicked
+    init(habit: Habit){
+        self.habit = habit
         super.init(frame: .zero)
         setupUI()
         addSubviews()

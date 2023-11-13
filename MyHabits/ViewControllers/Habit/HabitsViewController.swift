@@ -43,7 +43,6 @@ class HabitsViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        //let date = dateFormatter.date(from: dateStringCleared)!
         
         //let firstHabit = Habit(name: "Wake up at 6", date: dateFormatter.date(from: "06:00")!, color: UIColor(named: "Neon Carrot")!)
         //HabitsStore.shared.habits.append(firstHabit)
@@ -89,7 +88,7 @@ extension HabitsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let habit = HabitsStore.shared.habits[indexPath.row]
-        let cell = UIHabitViewCell(style: .default, reuseIdentifier: "cell", name: habit.name, time: "12:34", color: habit.color, isTicked: false)
+        let cell = UIHabitViewCell(style: .default, reuseIdentifier: "cell", habit: habit)
         return cell
     }
     

@@ -11,7 +11,12 @@ class UIHabitViewCell: UITableViewCell {
 
     // MARK: - Subviews
     let habitView: UIHabitView = {
-        let view = UIHabitView(name: "Example", time: "For example", color: UIColor(named: "Neon Carrot")!, isTicked: true)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "HH:mm"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        
+        let habit = Habit(name: "Example", date: dateFormatter.date(from: "09:00")!, trackDates: [], color: .blueRibbon)
+        let view = UIHabitView(habit: habit)
         view.layer.cornerRadius = 8
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -19,12 +24,9 @@ class UIHabitViewCell: UITableViewCell {
     
     // MARK: - Lifecycle
     
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, name: String, time: String, color: UIColor, isTicked: Bool) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, habit: Habit) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        habitView.name = name
-        habitView.time = time
-        habitView.color = color
-        habitView.isTicked = isTicked
+        habitView.habit = habit
         setupUI()
         addSubviews()
         setupConstraints()
@@ -61,6 +63,5 @@ class UIHabitViewCell: UITableViewCell {
             habitView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             habitView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
-        //print("constraints activated")
     }
 }
