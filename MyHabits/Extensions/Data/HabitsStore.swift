@@ -7,19 +7,12 @@
 
 import UIKit
 
-/// Класс для хранения данных о привычке.
 public final class Habit: Codable {
     
-    /// Название привычки.
     public var name: String
-    
-    /// Время выполнения привычки.
     public var date: Date
-    
-    /// Даты выполнения привычки.
     public var trackDates: [Date]
     
-    /// Цвет привычки для выделения в списке.
     public var color: UIColor {
         get {
             return .init(red: r, green: g, blue: b, alpha: a)

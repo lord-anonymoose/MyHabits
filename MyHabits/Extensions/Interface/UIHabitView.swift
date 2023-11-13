@@ -10,29 +10,20 @@ import UIKit
 class UIHabitView: UIView {
     
     // MARK: - Subviews
-    
-    var name: String {
+    var habit: Habit {
         didSet {
-            titleLabel.text = name
-        }
-    }
-    
-    var time: String {
-        didSet {
+            titleLabel.text = habit.name
+            
+            let date = habit.date
+            var calendar = Calendar.current
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat =  "HH:mm"
+            let time = dateFormatter.string(from: date)
+            
             timeLabel.text = "Daily at \(time)"
-        }
-    }
-    
-    var color: UIColor {
-        didSet {
-            titleLabel.textColor = color
-            tickButton.tintColor = color
-        }
-    }
-    
-    var isTicked: Bool {
-        didSet {
-            tickButton.isTicked = isTicked
+            titleLabel.textColor = habit.color
+            tickButton.tintColor = habit.color
+            tickButton.isTicked = habit.isAlreadyTakenToday
         }
     }
     
@@ -60,19 +51,23 @@ class UIHabitView: UIView {
     
     // MARK: - Lifecycle
 
-    init(name:String, time: String, color: UIColor, isTicked: Bool){
-        self.name = name
-        self.time = time
-        self.color = color
-        self.isTicked = isTicked
+    init(habit: Habit){
+        self.habit = habit
         super.init(frame: .zero)
         setupUI()
         addSubviews()
         setupConstraints()
+        setupDependencies()
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    @IBAction func updateHabit(sender: UIButton) {
+        print("Habit updated")
+        HabitsStore.shared.track(habit)
     }
     
     // MARK: - Private
@@ -109,6 +104,10 @@ class UIHabitView: UIView {
             tickButton.topAnchor.constraint(equalTo: topAnchor, constant: 48),
             tickButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -48)
         ])
+    }
+    
+    private func setupDependencies() {
+        tickButton.addTarget(self, action: #selector(updateHabit), for: .touchUpInside)
     }
 }
 
