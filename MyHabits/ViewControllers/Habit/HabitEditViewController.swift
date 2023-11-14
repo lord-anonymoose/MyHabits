@@ -207,8 +207,27 @@ class HabitEditViewController: UIViewController {
     }
     
     @IBAction func deleteButtonTapped(sender: AnyObject) {
-        HabitsStore.shared.habits.remove(at: row)
-        self.navigationController?.popViewController(animated: true)
+        let alert = UIAlertController(
+            title: "Are you sure?",
+            message: "You will not be able to recover this habit anymore",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(
+            title: "Delete",
+            style: .destructive,
+            handler: { _ in
+                HabitsStore.shared.habits.remove(at: self.row)
+                self.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel,
+            handler: { _ in
+        }))
+        present(alert,
+                animated: true,
+                completion: nil
+        )
     }
     
     // MARK: - Private
@@ -272,7 +291,7 @@ class HabitEditViewController: UIViewController {
             
             timePickerView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
             timePickerView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
-            timePickerView.topAnchor.constraint(equalTo: timeButton.bottomAnchor, constant: 16),
+            timePickerView.bottomAnchor.constraint(equalTo: deleteButton.topAnchor, constant: -64),
             timePickerView.heightAnchor.constraint(equalToConstant: 120),
             
             colorPickerView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),

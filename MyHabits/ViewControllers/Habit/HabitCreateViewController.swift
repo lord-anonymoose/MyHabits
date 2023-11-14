@@ -210,7 +210,7 @@ class HabitCreateViewController: UIViewController {
             
             timePickerView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
             timePickerView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
-            timePickerView.topAnchor.constraint(equalTo: timeButton.bottomAnchor, constant: 16),
+            timePickerView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: -32),
             timePickerView.heightAnchor.constraint(equalToConstant: 120),
             
             colorPickerView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
