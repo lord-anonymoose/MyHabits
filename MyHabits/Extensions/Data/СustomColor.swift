@@ -24,7 +24,6 @@ extension UIColor {
     static let myRoyalBlue = UIColor(named: CustomColor.royalBlue.rawValue)!
     
     var index: Int? {
-        let color = self.cgColor
         if self == UIColor.myBlueRibbon {
             return 0
         } else if self == UIColor.myElectricViolet {

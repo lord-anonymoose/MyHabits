@@ -23,6 +23,7 @@ class UIHabitView: UIView {
             titleLabel.textColor = habit.color
             tickButton.tintColor = habit.color
             tickButton.isTicked = habit.isAlreadyTakenToday
+            strikeLabel.text = "Current strike: \(getCurrentStrike(habit: habit))"
         }
     }
     
@@ -46,6 +47,14 @@ class UIHabitView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
         return button
+    }()
+    
+    let strikeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Current strike: 0"
+        label.textColor = .secondaryLabel
+        return label
     }()
     
     // MARK: - Lifecycle
@@ -81,6 +90,7 @@ class UIHabitView: UIView {
         addSubview(titleLabel)
         addSubview(timeLabel)
         addSubview(tickButton)
+        addSubview(strikeLabel)
     }
     
     private func setupConstraints() {
@@ -100,7 +110,11 @@ class UIHabitView: UIView {
             tickButton.widthAnchor.constraint(equalToConstant: 48),
             tickButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
             tickButton.topAnchor.constraint(equalTo: topAnchor, constant: 48),
-            tickButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -48)
+            tickButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -48),
+            
+            strikeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            strikeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            strikeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
         ])
     }
     

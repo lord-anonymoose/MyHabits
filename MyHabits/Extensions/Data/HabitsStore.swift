@@ -207,3 +207,36 @@ private extension Date {
         return dates
     }
 }
+
+public func removeTime(fromDate: Date) -> Date {
+    guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: fromDate)) else {
+        fatalError("Failed to strip time from Date object")
+    }
+    return date
+}
+
+
+public func getCurrentStrike(habit: Habit) -> Int {
+    var dates = HabitsStore.shared.dates
+    var trackDates = habit.trackDates
+    
+    dates.sort(by: { $0 > $1 })
+    trackDates.sort(by: { $0 > $1 })
+    
+    if trackDates.first! == removeTime(fromDate: Date()) {
+        dates.remove(at: 0)
+    }
+    
+    var strike = 0
+    var i = 0
+    
+    while i < trackDates.count - 1 {
+        if removeTime(fromDate: trackDates[i]) == removeTime(fromDate: dates[i]) {
+            strike += 1
+            i += 1
+        } else {
+            break
+        }
+    }
+    return strike
+}
