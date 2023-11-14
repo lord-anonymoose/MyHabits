@@ -34,12 +34,21 @@ class HabitsViewController: UIViewController {
         habitsView.reloadData()
     }
     
+    private let refreshControl = UIRefreshControl()
+    
     // MARK: - Actions
     
     @IBAction func addButtonTapped(sender: AnyObject) {
         print("Add button tapped")
         let habitsCreateViewController = HabitCreateViewController()
         self.navigationController?.pushViewController(habitsCreateViewController, animated: true)
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        habitsView.reloadData()
+        //sleep(3)
+        habitsView.refreshControl?.endRefreshing()
+        //self.refreshControl?.endRefreshing()
     }
     
     // MARK: - Private
@@ -76,6 +85,13 @@ class HabitsViewController: UIViewController {
         habitsView.delegate = self
         habitsView.dataSource = self
         habitsView.register(UIHabitViewCell.self, forCellReuseIdentifier: "cell")
+    
+        if #available(iOS 10.0, *) {
+            habitsView.refreshControl = refreshControl
+        } else {
+            habitsView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
     }
 }
 
