@@ -22,12 +22,12 @@ class UITimePickerView: UIView {
         }
     }
     
-    private lazy var timePicker: UIDatePicker = {
+    lazy var timePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
-        datePicker.subviews[0].backgroundColor = .white
+        //datePicker.subviews[0].backgroundColor = .white
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
@@ -40,8 +40,14 @@ class UITimePickerView: UIView {
     }()
     
     public lazy var saveButton: UIButton = {
-        let button = UIButton(configuration: .gray())
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        if traitCollection.userInterfaceStyle == .dark {
+            button.backgroundColor = UIColor(named: "Very Dark Gray") ?? .secondarySystemBackground
+        } else {
+            button.backgroundColor = UIColor(named: "Wild Sand") ?? .secondarySystemBackground
+        }
         button.layer.cornerRadius = 8
         button.setTitle("Save", for: .normal)
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)

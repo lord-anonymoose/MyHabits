@@ -33,10 +33,12 @@ class TabBarViewController: UITabBarController {
             infoNavigationController
         ]
         
+        /*
         let navigationBars = [
             habitsNavigationController.navigationBar,
             infoNavigationController.navigationBar
         ]
+         */
     }
 
 }

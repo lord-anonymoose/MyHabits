@@ -131,6 +131,20 @@ class HabitEditViewController: UIViewController {
         if let colorRow = color.index {
             colorPickerView.colorPicker.selectRow(colorRow, inComponent: 0, animated: false)
         }
+        
+        let date = HabitsStore.shared.habits[self.row].date
+        timePickerView.timePicker.date = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "HH:mm"
+        let time = dateFormatter.string(from: date)
+        let firstAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "textColor") ?? .label ]
+        let firstString = NSAttributedString(string: "Daily at ", attributes: firstAttribute)
+        let secondAttribute = [ NSAttributedString.Key.foregroundColor: UIColor(named: "Electric Violet") ?? .link]
+        let secondString = NSAttributedString(string: time, attributes: secondAttribute)
+        let resultString = NSMutableAttributedString()
+        resultString.append(firstString)
+        resultString.append(secondString)
+        timeButton.setAttributedTitle(resultString, for: .normal)
     }
     
     required init?(coder: NSCoder) {

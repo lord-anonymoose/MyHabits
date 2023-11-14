@@ -16,7 +16,6 @@ extension UITableView {
     func habitsView(isHeaderHidden: Bool = false) -> UITableView {
         var tableView = UITableView()
         if isHeaderHidden {
-            //let tableView = UITableView(frame: .zero, style: .grouped)
             tableView = UITableView(frame: .zero, style: .grouped)
         }
         tableView.translatesAutoresizingMaskIntoConstraints = false
