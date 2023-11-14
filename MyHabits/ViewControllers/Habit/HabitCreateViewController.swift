@@ -150,7 +150,6 @@ class HabitCreateViewController: UIViewController {
         let newHabit = Habit(name: name, date: date, color: color)
         
         HabitsStore.shared.habits.append(newHabit)
-        print(HabitsStore.shared.habits.count)
         self.navigationController?.popViewController(animated: true)
     }
     

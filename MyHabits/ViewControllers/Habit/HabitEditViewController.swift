@@ -10,6 +10,14 @@ import UIKit
 class HabitEditViewController: UIViewController {
     
     // MARK: - Subviews
+    var row: Int {
+        willSet {
+            titleLabel.text = HabitsStore.shared.habits[row].name
+        }
+        didSet {
+            titleLabel.text = HabitsStore.shared.habits[row].name
+        }
+    }
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -110,15 +118,28 @@ class HabitEditViewController: UIViewController {
     }()
     
     // MARK: - Lifecycle
+    init(row:Int)
+    {
+        self.row = row
+        super.init(nibName: nil, bundle: nil)
+        
+        let name = HabitsStore.shared.habits[self.row].name
+        titleTextField.insertText(name)
+        
+        let color = HabitsStore.shared.habits[self.row].color
+        colorCircle.color = color
+        if let colorRow = color.index {
+            colorPickerView.colorPicker.selectRow(colorRow, inComponent: 0, animated: false)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
-        
-        colorPickerView.delegate = self
-        timePickerView.delegate = self
-        titleTextField.delegate = self
-        
+        setupDependecies()
         setupUI()
         setupNavigationBar()
         addSubviews()
@@ -163,8 +184,7 @@ class HabitEditViewController: UIViewController {
         let color = colorCircle.color
         let newHabit = Habit(name: name, date: date, color: color)
         
-        HabitsStore.shared.habits.append(newHabit)
-        print(HabitsStore.shared.habits.count)
+        HabitsStore.shared.habits[row] = newHabit
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -172,7 +192,19 @@ class HabitEditViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func deleteButtonTapped(sender: AnyObject) {
+        HabitsStore.shared.habits.remove(at: row)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Private
+    private func setupDependecies() {
+        self.hideKeyboardWhenTappedAround()
+        colorPickerView.delegate = self
+        timePickerView.delegate = self
+        titleTextField.delegate = self
+        deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+    }
     
     private func setupUI() {
         view.backgroundColor = .systemBackground

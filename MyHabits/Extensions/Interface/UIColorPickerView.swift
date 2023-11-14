@@ -24,7 +24,7 @@ class UIColorPickerView: UIView {
         }
     }
     
-    private lazy var colorPicker: UIPickerView = {
+    lazy var colorPicker: UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.dataSource = self
