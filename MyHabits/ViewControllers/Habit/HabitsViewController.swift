@@ -51,8 +51,8 @@ class HabitsViewController: UIViewController {
 
     @objc func habitTapped(_ sender: UITapGestureRecognizer) {
         guard let cell = sender.view as? UITableViewCell else { return }
-        let habitsCreateViewController = HabitCreateViewController()
-        self.navigationController?.pushViewController(HabitEditViewController(row: cell.tag), animated: true)
+        let habitsEditViewController = HabitEditViewController(row: cell.tag)
+        self.navigationController?.pushViewController(habitsEditViewController, animated: true)
     }
     
     // MARK: - Private
