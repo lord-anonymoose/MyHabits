@@ -46,9 +46,13 @@ class HabitsViewController: UIViewController {
     
     @objc func refresh(_ sender: AnyObject) {
         habitsView.reloadData()
-        //sleep(3)
         habitsView.refreshControl?.endRefreshing()
-        //self.refreshControl?.endRefreshing()
+    }
+
+    @objc func habitTapped(_ sender: UITapGestureRecognizer) {
+        guard let cell = sender.view as? UITableViewCell else { return }
+        let habitsCreateViewController = HabitCreateViewController()
+        self.navigationController?.pushViewController(HabitEditViewController(row: cell.tag), animated: true)
     }
     
     // MARK: - Private
@@ -103,6 +107,12 @@ extension HabitsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let habit = HabitsStore.shared.habits[indexPath.row]
         let cell = UIHabitViewCell(style: .default, reuseIdentifier: "cell", habit: habit)
+        
+        cell.tag = indexPath.row
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(habitTapped(_:)))
+        
+        cell.addGestureRecognizer(tapGestureRecognizer)
+        
         return cell
     }
     

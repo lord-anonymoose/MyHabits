@@ -18,7 +18,7 @@ class UIHabitView: UIView {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat =  "HH:mm"
             let time = dateFormatter.string(from: date)
-            
+
             timeLabel.text = "Daily at \(time)"
             titleLabel.textColor = habit.color
             tickButton.tintColor = habit.color
@@ -65,7 +65,6 @@ class UIHabitView: UIView {
     
     // MARK: - Actions
     @IBAction func updateHabit(sender: UIButton) {
-        print("Habit updated")
         HabitsStore.shared.track(habit)
     }
     
