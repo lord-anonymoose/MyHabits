@@ -11,7 +11,7 @@
 		8E43A6EF2AFE1AC100F5C30A /* UITickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43A6EE2AFE1AC100F5C30A /* UITickButton.swift */; };
 		8E43A6F12AFECC1900F5C30A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43A6F02AFECC1900F5C30A /* UITableView.swift */; };
 		8E43A6F32AFECE6B00F5C30A /* UIHabitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43A6F22AFECE6B00F5C30A /* UIHabitViewCell.swift */; };
-		8E589E5E2B03B3FD00DE9485 /* UIHabitViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E589E5D2B03B3FD00DE9485 /* UIHabitViewHeader.swift */; };
+		8E589E5E2B03B3FD00DE9485 /* UIHabitProgressHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E589E5D2B03B3FD00DE9485 /* UIHabitProgressHeaderView.swift */; };
 		8E6C48CD2AF997BF00D56CDD /* HabitCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */; };
 		8E6C48CF2AF997C800D56CDD /* HabitEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */; };
 		8E7B40902AFD459E0058FE55 /* UITimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7B408F2AFD459E0058FE55 /* UITimePickerView.swift */; };
@@ -24,6 +24,8 @@
 		8ED2CA6C2AF57E3B00808041 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2CA6B2AF57E3B00808041 /* TabBarViewController.swift */; };
 		8ED2CA712AF57E3D00808041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED2CA702AF57E3D00808041 /* Assets.xcassets */; };
 		8ED2CA742AF57E3D00808041 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED2CA722AF57E3D00808041 /* LaunchScreen.storyboard */; };
+		8EEDC1922B04F67F00B12A88 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEDC1912B04F67F00B12A88 /* TestViewController.swift */; };
+		8EEDC1942B04F9FE00B12A88 /* UIHabitProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEDC1932B04F9FE00B12A88 /* UIHabitProgressView.swift */; };
 		8EFA22CD2AFACB4C0072E89A /* UIColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22CC2AFACB4C0072E89A /* UIColorPickerView.swift */; };
 		8EFA22D12AFCEF330072E89A /* UIColorCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22D02AFCEF330072E89A /* UIColorCircleView.swift */; };
 		8EFA22D32AFCEFD60072E89A /* UITextFieldWithLimitedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22D22AFCEFD60072E89A /* UITextFieldWithLimitedAction.swift */; };
@@ -35,7 +37,7 @@
 		8E43A6EE2AFE1AC100F5C30A /* UITickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITickButton.swift; sourceTree = "<group>"; };
 		8E43A6F02AFECC1900F5C30A /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		8E43A6F22AFECE6B00F5C30A /* UIHabitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHabitViewCell.swift; sourceTree = "<group>"; };
-		8E589E5D2B03B3FD00DE9485 /* UIHabitViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHabitViewHeader.swift; sourceTree = "<group>"; };
+		8E589E5D2B03B3FD00DE9485 /* UIHabitProgressHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHabitProgressHeaderView.swift; sourceTree = "<group>"; };
 		8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreateViewController.swift; sourceTree = "<group>"; };
 		8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditViewController.swift; sourceTree = "<group>"; };
 		8E7B408F2AFD459E0058FE55 /* UITimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITimePickerView.swift; sourceTree = "<group>"; };
@@ -50,6 +52,8 @@
 		8ED2CA702AF57E3D00808041 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ED2CA732AF57E3D00808041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED2CA752AF57E3D00808041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EEDC1912B04F67F00B12A88 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		8EEDC1932B04F9FE00B12A88 /* UIHabitProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHabitProgressView.swift; sourceTree = "<group>"; };
 		8EFA22CC2AFACB4C0072E89A /* UIColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorPickerView.swift; sourceTree = "<group>"; };
 		8EFA22D02AFCEF330072E89A /* UIColorCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorCircleView.swift; sourceTree = "<group>"; };
 		8EFA22D22AFCEFD60072E89A /* UITextFieldWithLimitedAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldWithLimitedAction.swift; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 				8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */,
 				8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */,
 				8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */,
+				8EEDC1912B04F67F00B12A88 /* TestViewController.swift */,
 			);
 			path = Habit;
 			sourceTree = "<group>";
@@ -141,6 +146,38 @@
 			path = MyHabits;
 			sourceTree = "<group>";
 		};
+		8EEDC1952B04FAD800B12A88 /* Basic objects */ = {
+			isa = PBXGroup;
+			children = (
+				8E43A6F02AFECC1900F5C30A /* UITableView.swift */,
+				8EFA22D22AFCEFD60072E89A /* UITextFieldWithLimitedAction.swift */,
+				8E7B40912AFD593A0058FE55 /* UIView.swift */,
+				8E43A6EE2AFE1AC100F5C30A /* UITickButton.swift */,
+				8EFA22D02AFCEF330072E89A /* UIColorCircleView.swift */,
+				8EFA22CC2AFACB4C0072E89A /* UIColorPickerView.swift */,
+				8E7B408F2AFD459E0058FE55 /* UITimePickerView.swift */,
+			);
+			path = "Basic objects";
+			sourceTree = "<group>";
+		};
+		8EEDC1962B04FB1900B12A88 /* Habit */ = {
+			isa = PBXGroup;
+			children = (
+				8E43A6EC2AFE153400F5C30A /* UIHabitView.swift */,
+				8E43A6F22AFECE6B00F5C30A /* UIHabitViewCell.swift */,
+			);
+			path = Habit;
+			sourceTree = "<group>";
+		};
+		8EEDC1972B04FB2D00B12A88 /* Habit Progress */ = {
+			isa = PBXGroup;
+			children = (
+				8EEDC1932B04F9FE00B12A88 /* UIHabitProgressView.swift */,
+				8E589E5D2B03B3FD00DE9485 /* UIHabitProgressHeaderView.swift */,
+			);
+			path = "Habit Progress";
+			sourceTree = "<group>";
+		};
 		8EFFEECF2AF58DDD006EBB58 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,16 +190,9 @@
 		8EFFEED02AF58DF8006EBB58 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				8E7B40912AFD593A0058FE55 /* UIView.swift */,
-				8E43A6F02AFECC1900F5C30A /* UITableView.swift */,
-				8EFA22D02AFCEF330072E89A /* UIColorCircleView.swift */,
-				8EFA22CC2AFACB4C0072E89A /* UIColorPickerView.swift */,
-				8EFA22D22AFCEFD60072E89A /* UITextFieldWithLimitedAction.swift */,
-				8E7B408F2AFD459E0058FE55 /* UITimePickerView.swift */,
-				8E43A6EE2AFE1AC100F5C30A /* UITickButton.swift */,
-				8E43A6EC2AFE153400F5C30A /* UIHabitView.swift */,
-				8E589E5D2B03B3FD00DE9485 /* UIHabitViewHeader.swift */,
-				8E43A6F22AFECE6B00F5C30A /* UIHabitViewCell.swift */,
+				8EEDC1952B04FAD800B12A88 /* Basic objects */,
+				8EEDC1972B04FB2D00B12A88 /* Habit Progress */,
+				8EEDC1962B04FB1900B12A88 /* Habit */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -252,10 +282,11 @@
 				8EFA22D52AFCF06C0072E89A /* СustomColor.swift in Sources */,
 				8ED2CA6C2AF57E3B00808041 /* TabBarViewController.swift in Sources */,
 				8ED2CA682AF57E3B00808041 /* AppDelegate.swift in Sources */,
-				8E589E5E2B03B3FD00DE9485 /* UIHabitViewHeader.swift in Sources */,
+				8E589E5E2B03B3FD00DE9485 /* UIHabitProgressHeaderView.swift in Sources */,
 				8EB8760E2AF5848C0057ECEF /* HabitsViewController.swift in Sources */,
 				8E43A6F32AFECE6B00F5C30A /* UIHabitViewCell.swift in Sources */,
 				8EFA22D32AFCEFD60072E89A /* UITextFieldWithLimitedAction.swift in Sources */,
+				8EEDC1922B04F67F00B12A88 /* TestViewController.swift in Sources */,
 				8E43A6F12AFECC1900F5C30A /* UITableView.swift in Sources */,
 				8E7B40902AFD459E0058FE55 /* UITimePickerView.swift in Sources */,
 				8EFA22D12AFCEF330072E89A /* UIColorCircleView.swift in Sources */,
@@ -264,6 +295,7 @@
 				8EFA22CD2AFACB4C0072E89A /* UIColorPickerView.swift in Sources */,
 				8E6C48CF2AF997C800D56CDD /* HabitEditViewController.swift in Sources */,
 				8EB876102AF584FB0057ECEF /* InfoViewController.swift in Sources */,
+				8EEDC1942B04F9FE00B12A88 /* UIHabitProgressView.swift in Sources */,
 				8ED2CA6A2AF57E3B00808041 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
