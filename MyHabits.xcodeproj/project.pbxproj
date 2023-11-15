@@ -24,7 +24,6 @@
 		8ED2CA6C2AF57E3B00808041 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2CA6B2AF57E3B00808041 /* TabBarViewController.swift */; };
 		8ED2CA712AF57E3D00808041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED2CA702AF57E3D00808041 /* Assets.xcassets */; };
 		8ED2CA742AF57E3D00808041 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED2CA722AF57E3D00808041 /* LaunchScreen.storyboard */; };
-		8EEDC1922B04F67F00B12A88 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEDC1912B04F67F00B12A88 /* TestViewController.swift */; };
 		8EEDC1942B04F9FE00B12A88 /* UIHabitProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEDC1932B04F9FE00B12A88 /* UIHabitProgressView.swift */; };
 		8EFA22CD2AFACB4C0072E89A /* UIColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22CC2AFACB4C0072E89A /* UIColorPickerView.swift */; };
 		8EFA22D12AFCEF330072E89A /* UIColorCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA22D02AFCEF330072E89A /* UIColorCircleView.swift */; };
@@ -52,7 +51,6 @@
 		8ED2CA702AF57E3D00808041 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ED2CA732AF57E3D00808041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED2CA752AF57E3D00808041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8EEDC1912B04F67F00B12A88 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		8EEDC1932B04F9FE00B12A88 /* UIHabitProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHabitProgressView.swift; sourceTree = "<group>"; };
 		8EFA22CC2AFACB4C0072E89A /* UIColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorPickerView.swift; sourceTree = "<group>"; };
 		8EFA22D02AFCEF330072E89A /* UIColorCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorCircleView.swift; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */,
 				8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */,
 				8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */,
-				8EEDC1912B04F67F00B12A88 /* TestViewController.swift */,
 			);
 			path = Habit;
 			sourceTree = "<group>";
@@ -286,7 +283,6 @@
 				8EB8760E2AF5848C0057ECEF /* HabitsViewController.swift in Sources */,
 				8E43A6F32AFECE6B00F5C30A /* UIHabitViewCell.swift in Sources */,
 				8EFA22D32AFCEFD60072E89A /* UITextFieldWithLimitedAction.swift in Sources */,
-				8EEDC1922B04F67F00B12A88 /* TestViewController.swift in Sources */,
 				8E43A6F12AFECC1900F5C30A /* UITableView.swift in Sources */,
 				8E7B40902AFD459E0058FE55 /* UITimePickerView.swift in Sources */,
 				8EFA22D12AFCEF330072E89A /* UIColorCircleView.swift in Sources */,

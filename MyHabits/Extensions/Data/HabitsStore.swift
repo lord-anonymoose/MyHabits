@@ -223,12 +223,17 @@ public func getCurrentStrike(habit: Habit) -> Int {
     dates.sort(by: { $0 > $1 })
     trackDates.sort(by: { $0 > $1 })
     
-    if trackDates.first! == removeTime(fromDate: Date()) {
-        dates.remove(at: 0)
+    var strike = 1
+    var i = 0
+    
+    if trackDates.isEmpty {
+        return 0
     }
     
-    var strike = 0
-    var i = 0
+    if trackDates.first! == removeTime(fromDate: Date()) {
+        dates.remove(at: 0)
+        strike += 1
+    }
     
     while i < trackDates.count - 1 {
         if removeTime(fromDate: trackDates[i]) == removeTime(fromDate: dates[i]) {

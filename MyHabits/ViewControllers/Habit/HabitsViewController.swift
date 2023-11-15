@@ -12,7 +12,7 @@ class HabitsViewController: UIViewController {
     // MARK: - Subviews
 
     private lazy var habitsView: UITableView = {
-        let tableView = UITableView().habitsView()
+        let tableView = UITableView().habitsView(isHeaderHidden: true)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         return tableView
@@ -53,6 +53,10 @@ class HabitsViewController: UIViewController {
         guard let cell = sender.view as? UITableViewCell else { return }
         let habitsEditViewController = HabitEditViewController(row: cell.tag)
         self.navigationController?.pushViewController(habitsEditViewController, animated: true)
+    }
+    
+    @IBAction func habitTicked(sender: UIButton) {
+        habitsView.reloadData()
     }
     
     // MARK: - Private
@@ -111,8 +115,9 @@ extension HabitsViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.tag = indexPath.row
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(habitTapped(_:)))
-        
         cell.addGestureRecognizer(tapGestureRecognizer)
+        
+        cell.habitView.tickButton.addTarget(self, action: #selector(habitTicked), for: .touchUpInside)
         
         return cell
     }
