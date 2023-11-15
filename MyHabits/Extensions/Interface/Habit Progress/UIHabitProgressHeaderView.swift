@@ -9,24 +9,13 @@ import Foundation
 import UIKit
 
 class UIHabitProgressHeaderView: UITableViewHeaderFooterView {
+
     // MARK: - Subviews
-    private lazy var motivationLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .secondaryLabel
-        if HabitsStore.shared.todayProgress == 1 {
-            label.text = "Well done!"
-        } else {
-            label.text = "Just do it!"
-        }
-        return label
-    }()
-    
-    private lazy var progressView: UIProgressView = {
-        let progressView = UIProgressView()
-        progressView.progress = HabitsStore.shared.todayProgress
-        progressView.translatesAutoresizingMaskIntoConstraints = false
-        return progressView
+    let habitProgressView: UIHabitProgressView = {
+        let view = UIHabitProgressView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 8
+        return view
     }()
     
     // MARK: - Lifecycle
@@ -34,7 +23,7 @@ class UIHabitProgressHeaderView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addSubviews()
-        //setupConstraints()
+        setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,12 +35,15 @@ class UIHabitProgressHeaderView: UITableViewHeaderFooterView {
     // MARK: - Private
     
     private func addSubviews() {
-        contentView.addSubview(motivationLabel)
-        contentView.addSubview(progressView)
-
+        contentView.addSubview(habitProgressView)
     }
     
     private func setupConstraints() {
-        
+        NSLayoutConstraint.activate([
+            habitProgressView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            habitProgressView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            habitProgressView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            habitProgressView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+        ])
     }
 }

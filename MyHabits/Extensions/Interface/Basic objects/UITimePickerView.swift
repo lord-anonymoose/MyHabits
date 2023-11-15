@@ -27,7 +27,6 @@ class UITimePickerView: UIView {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
-        //datePicker.subviews[0].backgroundColor = .white
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "HH:mm"

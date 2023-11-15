@@ -89,6 +89,7 @@ class HabitsViewController: UIViewController {
         habitsView.delegate = self
         habitsView.dataSource = self
         habitsView.register(UIHabitViewCell.self, forCellReuseIdentifier: "cell")
+        habitsView.register(UIHabitProgressHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
     
         if #available(iOS 10.0, *) {
             habitsView.refreshControl = refreshControl
@@ -118,6 +119,23 @@ extension HabitsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 176
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            if let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? UIHabitProgressHeaderView {
+                return view
+            }
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 104
+        } else {
+            return 0
+        }
     }
 }
 

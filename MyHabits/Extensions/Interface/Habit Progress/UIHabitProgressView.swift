@@ -25,11 +25,11 @@ class UIHabitProgressView: UIView {
     }()
     
     private lazy var progressView: UIProgressView = {
-        let progressView = UIProgressView()
-        progressView.translatesAutoresizingMaskIntoConstraints = false
-        progressView.tintColor = .electricViolet
-        progressView.progress = HabitsStore.shared.todayProgress
-        return progressView
+        let view = UIProgressView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.tintColor = .electricViolet
+        view.progress = HabitsStore.shared.todayProgress
+        return view
     }()
     
     private lazy var progressLabel: UILabel = {
@@ -88,5 +88,4 @@ class UIHabitProgressView: UIView {
             progressView.heightAnchor.constraint(equalToConstant: 5)
         ])
     }
-    
 }
