@@ -22,17 +22,23 @@ class UIHabitProgressHeaderView: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        setupUI()
         addSubviews()
         setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setupUI()
         addSubviews()
         setupConstraints()
     }
     
     // MARK: - Private
+    
+    private func setupUI() {
+        contentView.backgroundColor = .systemBackground
+    }
     
     private func addSubviews() {
         contentView.addSubview(habitProgressView)

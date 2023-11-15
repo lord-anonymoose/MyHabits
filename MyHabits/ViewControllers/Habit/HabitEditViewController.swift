@@ -307,7 +307,7 @@ class HabitEditViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        self.navigationItem.title = "Create a habit"
+        self.navigationItem.title = "Edit"
         
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
         saveButton.tintColor = UIColor(named: "Electric Violet") ?? .blue

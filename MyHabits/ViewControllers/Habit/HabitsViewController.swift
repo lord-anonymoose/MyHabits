@@ -39,7 +39,6 @@ class HabitsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func addButtonTapped(sender: AnyObject) {
-        print("Add button tapped")
         let habitsCreateViewController = HabitCreateViewController()
         self.navigationController?.pushViewController(habitsCreateViewController, animated: true)
     }
