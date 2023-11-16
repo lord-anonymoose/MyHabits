@@ -113,6 +113,7 @@ class HabitCreateViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setLargeTitleDisplayMode(.never)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

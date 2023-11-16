@@ -31,7 +31,11 @@ class HabitsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        setLargeTitleDisplayMode(.always)
+
         habitsView.reloadData()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private let refreshControl = UIRefreshControl()
@@ -49,9 +53,11 @@ class HabitsViewController: UIViewController {
     }
 
     @objc func habitTapped(_ sender: UITapGestureRecognizer) {
+
         guard let cell = sender.view as? UITableViewCell else { return }
-        let habitsEditViewController = HabitEditViewController(row: cell.tag)
-        self.navigationController?.pushViewController(habitsEditViewController, animated: true)
+        
+        let habit = HabitsStore.shared.habits[cell.tag]
+        self.navigationController?.pushViewController(HabitDatesViewController(habit: habit), animated: true)
     }
     
     @IBAction func habitTicked(sender: UIButton) {
@@ -61,7 +67,6 @@ class HabitsViewController: UIViewController {
     // MARK: - Private
 
     private func setupUI() {
-        //overrideUserInterfaceStyle = .light
         view.backgroundColor = .systemBackground
 
         let dateFormatter = DateFormatter()

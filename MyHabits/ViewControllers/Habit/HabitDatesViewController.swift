@@ -15,10 +15,11 @@ class HabitDatesViewController: UIViewController {
             
         }
     }
-    
+        
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isUserInteractionEnabled = false
         return tableView
     }()
     
@@ -44,6 +45,7 @@ class HabitDatesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setLargeTitleDisplayMode(.never)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,18 +58,29 @@ class HabitDatesViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func editButtonTapped(sender: AnyObject) {
+        if let row = HabitsStore.shared.habits.firstIndex(of: self.habit) {
+            self.navigationController?.pushViewController(HabitEditViewController(row: row), animated: true)
+        }
+    }
+    
     // MARK: - Private
     
     private func setupUI() {
-        overrideUserInterfaceStyle = .light
         view.backgroundColor = .systemBackground
     }
     
     private func setupNavigationBar() {
         self.navigationItem.title = self.habit.name
-        let todayButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(todayButtonTapped))
+        
+        let todayButton = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(todayButtonTapped))
         todayButton.tintColor = UIColor(named: "Electric Violet")
         navigationItem.leftBarButtonItems = [todayButton]
+
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
+        editButton.tintColor = UIColor(named: "Electric Violet")
+        navigationItem.rightBarButtonItems = [editButton]
+        
     }
     
     private func addSubviews() {
@@ -93,15 +106,16 @@ class HabitDatesViewController: UIViewController {
 
 extension HabitDatesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return HabitsStore.shared.habits.count
+        let availableDates = prepareDates(habit: habit)
+        return availableDates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UIDateViewTableCell()
+        return UIDateViewTableCell(style: .default, reuseIdentifier: "cell", habit: habit, date: prepareDates(habit: habit)[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 48
+        return 50
     }
 }
 

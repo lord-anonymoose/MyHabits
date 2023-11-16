@@ -245,3 +245,37 @@ public func getCurrentStrike(habit: Habit) -> Int {
     }
     return strike
 }
+
+public func dateToString(date: Date) -> String {
+    let today = Date()
+    let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
+    if removeTime(fromDate: date) == removeTime(fromDate: today) {
+        return "Today"
+    } else if removeTime(fromDate: date) == removeTime(fromDate: yesterday) {
+        return "Yesterday"
+    } else {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        return dateFormatter.string(from: date)
+    }
+}
+
+public func prepareDates(habit: Habit) -> [Date] {
+    var availableDates = [Date]()
+    for date in HabitsStore.shared.dates {
+        if removeTime(fromDate: date) >= removeTime(fromDate: habit.trackDates.min() ?? Date()) {
+            availableDates.append(date)
+        }
+    }
+    availableDates.sort(by: { $0 > $1 })
+    
+    return availableDates
+}
+
+public func checkDate(date: Date, habit: Habit) -> Bool {
+    var successfulDates = [Date]()
+    for date in habit.trackDates {
+        successfulDates.append(removeTime(fromDate: date))
+    }
+    return successfulDates.contains(removeTime(fromDate: date))
+}
