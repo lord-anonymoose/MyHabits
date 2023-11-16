@@ -35,7 +35,7 @@ class HabitDatesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupDependecies()
+        setupDependencies()
         setupUI()
         setupNavigationBar()
         addSubviews()
@@ -83,6 +83,12 @@ class HabitDatesViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor)
         ])
     }
+    
+    private func setupDependencies() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UIHabitViewCell.self, forCellReuseIdentifier: "cell")
+    }
 }
 
 extension HabitDatesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -91,30 +97,11 @@ extension HabitDatesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return UIDateViewTableCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //return 176
-        return 32
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            if let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? UIHabitProgressHeaderView {
-                view.habitProgressView.updateValues()
-                return view
-            }
-        }
-        return nil
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 104
-        } else {
-            return 0
-        }
+        return 48
     }
 }
 

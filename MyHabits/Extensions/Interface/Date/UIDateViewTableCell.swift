@@ -25,6 +25,7 @@ final class UIDateViewTableCell: UITableViewCell {
     let dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Example Text"
         return label
     }()
     
@@ -70,14 +71,20 @@ final class UIDateViewTableCell: UITableViewCell {
     }
     
     private func setupUI() {
-        
+        backgroundColor = .systemBackground
     }
     
     private func addSubviews() {
-        
+        contentView.addSubview(dateLabel)
     }
     
     private func setupConstraints() {
-        
+        NSLayoutConstraint.activate([
+            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            dateLabel.heightAnchor.constraint(equalToConstant: 16)
+        ])
     }
 }
