@@ -158,6 +158,7 @@ class HabitEditViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setLargeTitleDisplayMode(.never)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -196,6 +197,7 @@ class HabitEditViewController: UIViewController {
             
             let color = colorCircle.color
             let newHabit = Habit(name: name, date: date, color: color)
+            newHabit.trackDates = HabitsStore.shared.habits[row].trackDates
             
             HabitsStore.shared.habits[row] = newHabit
             self.navigationController?.popViewController(animated: true)
@@ -217,7 +219,7 @@ class HabitEditViewController: UIViewController {
             style: .destructive,
             handler: { _ in
                 HabitsStore.shared.habits.remove(at: self.row)
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
         }))
         alert.addAction(UIAlertAction(
             title: "Cancel",

@@ -18,14 +18,13 @@ final class UIDateViewTableCell: UITableViewCell {
     
     var date: Date {
         didSet {
-            
+            dateLabel.text = dateToString(date: date)
         }
     }
     
     let dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Example Text"
         return label
     }()
     
@@ -33,6 +32,10 @@ final class UIDateViewTableCell: UITableViewCell {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = false
+        button.clipsToBounds = true
+        let image = UIImage(systemName: "checkmark.circle.fill")
+        button.setImage(image, for: .normal)
+        button.tintColor = .electricViolet
         return button
     }()
     
@@ -43,6 +46,7 @@ final class UIDateViewTableCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
         addSubviews()
+        setupDependencies()
         setupConstraints()
     }
         
@@ -51,6 +55,7 @@ final class UIDateViewTableCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
         addSubviews()
+        setupDependencies()
         setupConstraints()
     }
         
@@ -59,6 +64,7 @@ final class UIDateViewTableCell: UITableViewCell {
         super.init(coder: aDecoder)
         setupUI()
         addSubviews()
+        setupDependencies()
         setupConstraints()
     }
     
@@ -76,6 +82,19 @@ final class UIDateViewTableCell: UITableViewCell {
     
     private func addSubviews() {
         contentView.addSubview(dateLabel)
+        contentView.addSubview(tickButton)
+    }
+    
+    private func setupDependencies() {
+        var text = dateToString(date: self.date)
+        if let habit = self.habit {
+            if MyHabits.checkDate(date: date, habit: habit) {
+                tickButton.isHidden = false
+            } else {
+                tickButton.isHidden = true
+            }
+        }
+        dateLabel.text = text
     }
     
     private func setupConstraints() {
@@ -84,7 +103,13 @@ final class UIDateViewTableCell: UITableViewCell {
             dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            dateLabel.heightAnchor.constraint(equalToConstant: 16)
+            dateLabel.heightAnchor.constraint(equalToConstant: 18),
+            
+            tickButton.widthAnchor.constraint(equalToConstant: 22),
+            tickButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            tickButton.heightAnchor.constraint(equalToConstant: 22),
+            tickButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
+            tickButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14)
         ])
     }
 }
