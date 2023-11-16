@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E1BA33F2B063B0F006DD19F /* info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA33E2B063B0F006DD19F /* info.swift */; };
+		8E1BA3412B063EDE006DD19F /* showEmptyHabitAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA3402B063EDE006DD19F /* showEmptyHabitAlert.swift */; };
 		8E43A6ED2AFE153400F5C30A /* UIHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43A6EC2AFE153400F5C30A /* UIHabitView.swift */; };
 		8E43A6EF2AFE1AC100F5C30A /* UITickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43A6EE2AFE1AC100F5C30A /* UITickButton.swift */; };
 		8E43A6F12AFECC1900F5C30A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43A6F02AFECC1900F5C30A /* UITableView.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		8E1BA33E2B063B0F006DD19F /* info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = info.swift; sourceTree = "<group>"; };
+		8E1BA3402B063EDE006DD19F /* showEmptyHabitAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showEmptyHabitAlert.swift; sourceTree = "<group>"; };
 		8E43A6EC2AFE153400F5C30A /* UIHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHabitView.swift; sourceTree = "<group>"; };
 		8E43A6EE2AFE1AC100F5C30A /* UITickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITickButton.swift; sourceTree = "<group>"; };
 		8E43A6F02AFECC1900F5C30A /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E1BA3422B063EEC006DD19F /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		8E6C48D02AF9980400D56CDD /* Habit */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +201,8 @@
 				8EEDC1952B04FAD800B12A88 /* Basic objects */,
 				8EEDC1972B04FB2D00B12A88 /* Habit Progress */,
 				8EEDC1962B04FB1900B12A88 /* Habit */,
+				8E1BA3422B063EEC006DD19F /* Alert */,
+				8E1BA3402B063EDE006DD19F /* showEmptyHabitAlert.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -296,6 +307,7 @@
 				8EB876102AF584FB0057ECEF /* InfoViewController.swift in Sources */,
 				8E1BA33F2B063B0F006DD19F /* info.swift in Sources */,
 				8EEDC1942B04F9FE00B12A88 /* UIHabitProgressView.swift in Sources */,
+				8E1BA3412B063EDE006DD19F /* showEmptyHabitAlert.swift in Sources */,
 				8ED2CA6A2AF57E3B00808041 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
