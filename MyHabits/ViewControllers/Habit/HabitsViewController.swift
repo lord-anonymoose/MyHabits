@@ -61,8 +61,8 @@ class HabitsViewController: UIViewController {
     // MARK: - Private
 
     private func setupUI() {
+        //overrideUserInterfaceStyle = .light
         view.backgroundColor = .systemBackground
-        overrideUserInterfaceStyle = .light
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
@@ -82,10 +82,10 @@ class HabitsViewController: UIViewController {
     private func setupConstraints() {
         let safeAreaGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            habitsView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 0),
-            habitsView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: 0),
-            habitsView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 0),
-            habitsView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: 0)
+            habitsView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+            habitsView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+            habitsView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            habitsView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor)
         ])
     }
     
@@ -130,6 +130,7 @@ extension HabitsViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             if let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? UIHabitProgressHeaderView {
                 view.habitProgressView.updateValues()
+                view.habitProgressView.setupUI()
                 return view
             }
         }

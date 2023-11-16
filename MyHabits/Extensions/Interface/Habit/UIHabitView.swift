@@ -79,11 +79,7 @@ class UIHabitView: UIView {
     
     // MARK: - Private
     private func setupUI() {
-        if traitCollection.userInterfaceStyle == .dark {
-            backgroundColor = UIColor(named: "Very Dark Gray") ?? .secondarySystemBackground
-        } else {
-            backgroundColor = UIColor(named: "Wild Sand") ?? .secondarySystemBackground
-        }
+        backgroundColor = .myCustomBackground
     }
     
     private func addSubviews() {

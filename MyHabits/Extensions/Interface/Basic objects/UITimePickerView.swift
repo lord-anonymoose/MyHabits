@@ -41,14 +41,7 @@ final class UITimePickerView: UIView {
     public lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .wildSand
-        /*
-        if traitCollection.userInterfaceStyle == .dark {
-            button.backgroundColor = UIColor(named: "Very Dark Gray") ?? .secondarySystemBackground
-        } else {
-            button.backgroundColor = UIColor(named: "Wild Sand") ?? .secondarySystemBackground
-        }
-        */
+        button.backgroundColor = .myCustomBackground
         button.layer.cornerRadius = 8
         button.setTitle("Save", for: .normal)
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)

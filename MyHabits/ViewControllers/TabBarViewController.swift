@@ -16,10 +16,9 @@ class TabBarViewController: UITabBarController {
     
     func setupUI() {
         self.tabBar.backgroundColor = .systemGray6
-        overrideUserInterfaceStyle = .light
         self.tabBar.tintColor = UIColor(named: "Electric Violet") ?? .blue
         
-        let habitsNavigationController = UINavigationController(rootViewController: HabitsViewController())
+        let habitsNavigationController = UINavigationController(rootViewController: HabitDatesViewController(habit: HabitsStore.shared.habits[0]))
         habitsNavigationController.navigationBar.prefersLargeTitles = true
         habitsNavigationController.topViewController?.title = "Today"
         habitsNavigationController.tabBarItem = UITabBarItem(title: "Habits", image: UIImage(systemName: "rectangle.grid.1x2.fill"), tag: 0)

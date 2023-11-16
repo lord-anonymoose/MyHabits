@@ -22,7 +22,8 @@ extension UIColor {
     static let myForestGreen = UIColor(named: CustomColor.forestGreen.rawValue)!
     static let myNeonCarrot = UIColor(named: CustomColor.neonCarrot.rawValue)!
     static let myRoyalBlue = UIColor(named: CustomColor.royalBlue.rawValue)!
-    static let myVeryDarkGray = UIColor(named: "Very Dark Gray")
+    static let myVeryDarkGray = UIColor(named: "Very Dark Gray")!
+    static let myCustomBackground = UIColor(named: "Custom Background")!
     
     var index: Int? {
         if self == UIColor.myBlueRibbon {

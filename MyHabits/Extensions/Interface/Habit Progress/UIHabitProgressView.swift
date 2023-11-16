@@ -16,13 +16,6 @@ class UIHabitProgressView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .secondaryLabel
         label.textAlignment = .left
-        /*
-        if HabitsStore.shared.todayProgress == 1 {
-            label.text = "Well done!"
-        } else {
-            label.text = "Just do it!"
-        }
-        */
         return label
     }()
     
@@ -30,7 +23,6 @@ class UIHabitProgressView: UIView {
         let view = UIProgressView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.tintColor = .electricViolet
-        //view.progress = HabitsStore.shared.todayProgress
         return view
     }()
     
@@ -39,7 +31,6 @@ class UIHabitProgressView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .secondaryLabel
         label.textAlignment = .right
-        //label.text = "\(Int(HabitsStore.shared.todayProgress * 100))%"
         return label
     }()
     
@@ -58,12 +49,8 @@ class UIHabitProgressView: UIView {
     }
     
     // MARK: Private
-    private func setupUI() {
-        if traitCollection.userInterfaceStyle == .dark {
-            backgroundColor = UIColor(named: "Very Dark Gray") ?? .secondarySystemBackground
-        } else {
-            backgroundColor = UIColor(named: "Wild Sand") ?? .secondarySystemBackground
-        }
+    func setupUI() {
+        backgroundColor = .customBackground
     }
     
     private func addSubviews() {
@@ -101,6 +88,5 @@ class UIHabitProgressView: UIView {
         progressView.progress = HabitsStore.shared.todayProgress
         
         progressLabel.text = "\(Int(HabitsStore.shared.todayProgress * 100))%"
-
     }
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8E1BA33F2B063B0F006DD19F /* info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA33E2B063B0F006DD19F /* info.swift */; };
 		8E1BA3412B063EDE006DD19F /* showEmptyHabitAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA3402B063EDE006DD19F /* showEmptyHabitAlert.swift */; };
+		8E1BA3442B065B72006DD19F /* HabitDatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA3432B065B72006DD19F /* HabitDatesViewController.swift */; };
+		8E1BA3462B06610E006DD19F /* UIDateViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA3452B06610E006DD19F /* UIDateViewTableCell.swift */; };
 		8E43A6ED2AFE153400F5C30A /* UIHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43A6EC2AFE153400F5C30A /* UIHabitView.swift */; };
 		8E43A6EF2AFE1AC100F5C30A /* UITickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43A6EE2AFE1AC100F5C30A /* UITickButton.swift */; };
 		8E43A6F12AFECC1900F5C30A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43A6F02AFECC1900F5C30A /* UITableView.swift */; };
@@ -36,6 +38,8 @@
 /* Begin PBXFileReference section */
 		8E1BA33E2B063B0F006DD19F /* info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = info.swift; sourceTree = "<group>"; };
 		8E1BA3402B063EDE006DD19F /* showEmptyHabitAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showEmptyHabitAlert.swift; sourceTree = "<group>"; };
+		8E1BA3432B065B72006DD19F /* HabitDatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDatesViewController.swift; sourceTree = "<group>"; };
+		8E1BA3452B06610E006DD19F /* UIDateViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDateViewTableCell.swift; sourceTree = "<group>"; };
 		8E43A6EC2AFE153400F5C30A /* UIHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHabitView.swift; sourceTree = "<group>"; };
 		8E43A6EE2AFE1AC100F5C30A /* UITickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITickButton.swift; sourceTree = "<group>"; };
 		8E43A6F02AFECC1900F5C30A /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
@@ -76,8 +80,17 @@
 		8E1BA3422B063EEC006DD19F /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				8E1BA3402B063EDE006DD19F /* showEmptyHabitAlert.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		8E1BA3472B066115006DD19F /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				8E1BA3452B06610E006DD19F /* UIDateViewTableCell.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 		8E6C48D02AF9980400D56CDD /* Habit */ = {
@@ -86,6 +99,7 @@
 				8EB8760D2AF5848C0057ECEF /* HabitsViewController.swift */,
 				8E6C48CC2AF997BF00D56CDD /* HabitCreateViewController.swift */,
 				8E6C48CE2AF997C800D56CDD /* HabitEditViewController.swift */,
+				8E1BA3432B065B72006DD19F /* HabitDatesViewController.swift */,
 			);
 			path = Habit;
 			sourceTree = "<group>";
@@ -201,8 +215,8 @@
 				8EEDC1952B04FAD800B12A88 /* Basic objects */,
 				8EEDC1972B04FB2D00B12A88 /* Habit Progress */,
 				8EEDC1962B04FB1900B12A88 /* Habit */,
+				8E1BA3472B066115006DD19F /* Date */,
 				8E1BA3422B063EEC006DD19F /* Alert */,
-				8E1BA3402B063EDE006DD19F /* showEmptyHabitAlert.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -290,11 +304,13 @@
 				8E43A6EF2AFE1AC100F5C30A /* UITickButton.swift in Sources */,
 				8E43A6ED2AFE153400F5C30A /* UIHabitView.swift in Sources */,
 				8EB8760C2AF583FC0057ECEF /* HabitsStore.swift in Sources */,
+				8E1BA3462B06610E006DD19F /* UIDateViewTableCell.swift in Sources */,
 				8EFA22D52AFCF06C0072E89A /* СustomColor.swift in Sources */,
 				8ED2CA6C2AF57E3B00808041 /* TabBarViewController.swift in Sources */,
 				8ED2CA682AF57E3B00808041 /* AppDelegate.swift in Sources */,
 				8E589E5E2B03B3FD00DE9485 /* UIHabitProgressHeaderView.swift in Sources */,
 				8EB8760E2AF5848C0057ECEF /* HabitsViewController.swift in Sources */,
+				8E1BA3442B065B72006DD19F /* HabitDatesViewController.swift in Sources */,
 				8E43A6F32AFECE6B00F5C30A /* UIHabitViewCell.swift in Sources */,
 				8EFA22D32AFCEFD60072E89A /* UITextFieldWithLimitedAction.swift in Sources */,
 				8E43A6F12AFECC1900F5C30A /* UITableView.swift in Sources */,
