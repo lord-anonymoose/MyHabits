@@ -149,7 +149,7 @@ class HabitCreateViewController: UIViewController {
             dateFormatter.dateFormat =  "HH:mm"
             dateFormatter.locale = Locale(identifier: "ru_RU")
             let date = dateFormatter.date(from: dateStringCleared)!
-                    
+            
             let color = colorCircle.color
             let newHabit = Habit(name: name, date: date, color: color)
             
