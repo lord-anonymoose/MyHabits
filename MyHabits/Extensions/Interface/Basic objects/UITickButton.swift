@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UITickButton: UIButton {
+final class UITickButton: UIButton {
 
     // MARK: - Subviews and Variables
 

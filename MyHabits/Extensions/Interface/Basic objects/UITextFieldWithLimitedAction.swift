@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UITextFieldWithLimitedActions: UITextField {
+final class UITextFieldWithLimitedActions: UITextField {
     convenience init() {
         self.init(frame: .zero)
     }

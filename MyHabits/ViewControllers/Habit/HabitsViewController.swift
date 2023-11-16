@@ -62,7 +62,8 @@ class HabitsViewController: UIViewController {
 
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        
+        overrideUserInterfaceStyle = .light
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
         dateFormatter.locale = Locale(identifier: "ru_RU")

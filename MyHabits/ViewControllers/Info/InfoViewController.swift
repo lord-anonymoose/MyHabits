@@ -113,6 +113,7 @@ class InfoViewController: UIViewController {
 
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        overrideUserInterfaceStyle = .light
     }
     
     private func addSubviews() {

@@ -106,11 +106,14 @@ class HabitEditViewController: UIViewController {
     private lazy var deleteButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .wildSand
+        /*
         if traitCollection.userInterfaceStyle == .dark {
-            button.backgroundColor = UIColor(named: "Very Dark Gray") ?? .secondarySystemBackground
+            button.backgroundColor = .veryDarkGray ?? .secondarySystemBackground
         } else {
-            button.backgroundColor = UIColor(named: "Wild Sand") ?? .secondarySystemBackground
+            button.backgroundColor = .wildSand ?? .secondarySystemBackground
         }
+        */
         button.layer.cornerRadius = 8
         button.setTitle("Delete Habit", for: .normal)
         button.tintColor = .systemRed
@@ -241,6 +244,7 @@ class HabitEditViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        overrideUserInterfaceStyle = .light
     }
     
     private func addSubviews() {

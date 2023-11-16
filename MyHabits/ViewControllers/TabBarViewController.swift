@@ -16,6 +16,7 @@ class TabBarViewController: UITabBarController {
     
     func setupUI() {
         self.tabBar.backgroundColor = .systemGray6
+        overrideUserInterfaceStyle = .light
         self.tabBar.tintColor = UIColor(named: "Electric Violet") ?? .blue
         
         let habitsNavigationController = UINavigationController(rootViewController: HabitsViewController())
