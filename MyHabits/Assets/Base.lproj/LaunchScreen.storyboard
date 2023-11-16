@@ -32,7 +32,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tableBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nLB-hj-kWG" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="HSK-1f-kYs"/>
                             <constraint firstItem="nLB-hj-kWG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ecA-J0-Xw8"/>
@@ -51,7 +51,7 @@
         <namedColor name="electricViolet">
             <color red="0.63137254901960782" green="0.086274509803921567" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
