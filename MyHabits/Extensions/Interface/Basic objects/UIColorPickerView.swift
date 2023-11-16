@@ -13,7 +13,7 @@ protocol ColorPickerDelegate:AnyObject {
     func colorPickerValueChanged(newColor:UIColor)
 }
 
-class UIColorPickerView: UIView {
+final class UIColorPickerView: UIView {
 
     // MARK: - Subviews
 

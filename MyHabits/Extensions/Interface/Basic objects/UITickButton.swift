@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UITickButton: UIButton {
+final class UITickButton: UIButton {
 
     // MARK: - Subviews and Variables
 
@@ -42,8 +42,11 @@ class UITickButton: UIButton {
     // MARK: - Actions
     
     @IBAction func didTapButton(sender: UIButton) {
-        self.isTicked.toggle()
-        updateTick()
+        if !self.isTicked {
+            self.isTicked.toggle()
+            updateTick()
+        }
+        //updateTick()
     }
     
     // MARK: - Private

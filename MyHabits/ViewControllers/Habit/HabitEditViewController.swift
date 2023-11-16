@@ -106,11 +106,14 @@ class HabitEditViewController: UIViewController {
     private lazy var deleteButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .wildSand
+        /*
         if traitCollection.userInterfaceStyle == .dark {
-            button.backgroundColor = UIColor(named: "Very Dark Gray") ?? .secondarySystemBackground
+            button.backgroundColor = .veryDarkGray ?? .secondarySystemBackground
         } else {
-            button.backgroundColor = UIColor(named: "Wild Sand") ?? .secondarySystemBackground
+            button.backgroundColor = .wildSand ?? .secondarySystemBackground
         }
+        */
         button.layer.cornerRadius = 8
         button.setTitle("Delete Habit", for: .normal)
         button.tintColor = .systemRed
@@ -188,18 +191,22 @@ class HabitEditViewController: UIViewController {
     @IBAction func saveButtonTapped(sender: AnyObject) {
         let name = titleTextField.text!
         
-        let dateString = timeButton.currentAttributedTitle?.string ?? "Daily at 15:00"
-        let dateStringCleared = dateString.replacingOccurrences(of: "Daily at ", with: "")
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat =  "HH:mm"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        let date = dateFormatter.date(from: dateStringCleared)!
-                
-        let color = colorCircle.color
-        let newHabit = Habit(name: name, date: date, color: color)
-        
-        HabitsStore.shared.habits[row] = newHabit
-        self.navigationController?.popViewController(animated: true)
+        if name.replacingOccurrences(of: " ", with: "") == "" {
+            self.showEmptyHabitAlert()
+        } else {
+            let dateString = timeButton.currentAttributedTitle?.string ?? "Daily at 15:00"
+            let dateStringCleared = dateString.replacingOccurrences(of: "Daily at ", with: "")
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat =  "HH:mm"
+            dateFormatter.locale = Locale(identifier: "ru_RU")
+            let date = dateFormatter.date(from: dateStringCleared)!
+            
+            let color = colorCircle.color
+            let newHabit = Habit(name: name, date: date, color: color)
+            
+            HabitsStore.shared.habits[row] = newHabit
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
@@ -241,6 +248,7 @@ class HabitEditViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        overrideUserInterfaceStyle = .light
     }
     
     private func addSubviews() {
@@ -307,7 +315,7 @@ class HabitEditViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        self.navigationItem.title = "Create a habit"
+        self.navigationItem.title = "Edit"
         
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
         saveButton.tintColor = UIColor(named: "Electric Violet") ?? .blue

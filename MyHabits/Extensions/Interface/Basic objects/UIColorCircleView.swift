@@ -9,7 +9,7 @@
 
 import UIKit
 
-class UIColorCircleView: UIView {
+final class UIColorCircleView: UIView {
 
     // MARK: - Subviews and Variables
 

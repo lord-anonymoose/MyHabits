@@ -12,7 +12,7 @@ class HabitsViewController: UIViewController {
     // MARK: - Subviews
 
     private lazy var habitsView: UITableView = {
-        let tableView = UITableView().habitsView()
+        let tableView = UITableView().habitsView(isHeaderHidden: true)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         return tableView
@@ -39,7 +39,6 @@ class HabitsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func addButtonTapped(sender: AnyObject) {
-        print("Add button tapped")
         let habitsCreateViewController = HabitCreateViewController()
         self.navigationController?.pushViewController(habitsCreateViewController, animated: true)
     }
@@ -55,11 +54,16 @@ class HabitsViewController: UIViewController {
         self.navigationController?.pushViewController(habitsEditViewController, animated: true)
     }
     
+    @IBAction func habitTicked(sender: UIButton) {
+        habitsView.reloadData()
+    }
+    
     // MARK: - Private
 
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        
+        overrideUserInterfaceStyle = .light
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
         dateFormatter.locale = Locale(identifier: "ru_RU")
@@ -111,8 +115,9 @@ extension HabitsViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.tag = indexPath.row
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(habitTapped(_:)))
-        
         cell.addGestureRecognizer(tapGestureRecognizer)
+        
+        cell.habitView.tickButton.addTarget(self, action: #selector(habitTicked), for: .touchUpInside)
         
         return cell
     }
@@ -124,6 +129,7 @@ extension HabitsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             if let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? UIHabitProgressHeaderView {
+                view.habitProgressView.updateValues()
                 return view
             }
         }
