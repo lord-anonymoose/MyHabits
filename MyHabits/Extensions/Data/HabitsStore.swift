@@ -29,13 +29,13 @@ public final class Habit: Codable {
             self.a = a
         }
     }
-    
-    /// Описание времени выполнения привычки.
+
+    // Habit completion time description
     public var dateString: String {
         "Daily at " + dateFormatter.string(from: date)
     }
     
-    /// Показывает, была ли сегодня добавлена привычка.
+    // Checks if habit is already done for today
     public var isAlreadyTakenToday: Bool {
         guard let lastTrackDate = trackDates.last else {
             return false
@@ -86,20 +86,19 @@ extension Habit: Equatable {
     }
 }
 
-/// Класс для сохранения и изменения привычек пользователя.
+// Class for saving and changing habits
 public final class HabitsStore {
     
-    /// Синглтон для изменения состояния привычек из разных модулей.
     public static let shared: HabitsStore = .init()
     
-    /// Список привычек, добавленных пользователем. Добавленные привычки сохраняются в UserDefaults и доступны после перезагрузки приложения.
+    // List of added habits
     public var habits: [Habit] = [] {
         didSet {
             save()
         }
     }
     
-    /// Даты с момента установки приложения с разницей в один день.
+    // All dates since app was installed
     public var dates: [Date] {
         guard let startDate = userDefaults.object(forKey: "start_date") as? Date else {
             return []
@@ -107,7 +106,7 @@ public final class HabitsStore {
         return Date.dates(from: startDate, to: .init())
     }
     
-    /// Возвращает значение от 0 до 1.
+    // Counts today's progress (values from 0 to 1)
     public var todayProgress: Float {
         guard habits.isEmpty == false else {
             return 0
@@ -135,7 +134,7 @@ public final class HabitsStore {
     
     // MARK: - Lifecycle
     
-    /// Сохраняет все изменения в привычках в UserDefaults.
+    // Saves all habit changes in UserDefaults.
     public func save() {
         do {
             let data = try encoder.encode(habits)
@@ -146,15 +145,13 @@ public final class HabitsStore {
         }
     }
     
-    /// Добавляет текущую дату в trackDates для переданной привычки.
-    /// - Parameter habit: Привычка, в которую добавится новая дата.
+    // Track habits that was done today
     public func track(_ habit: Habit) {
         habit.trackDates.append(.init())
         save()
     }
     
-    /// Возвращает отформатированное время для даты.
-    /// - Parameter index: Индекс в массиве dates.
+
     public func trackDateString(forIndex index: Int) -> String? {
         guard index < dates.count else {
             return nil
@@ -162,11 +159,7 @@ public final class HabitsStore {
         return dateFormatter.string(from: dates[index])
     }
     
-    /// Показывает, была ли затрекана привычка в переданную дату.
-    /// - Parameters:
-    ///   - habit: Привычка, у которой проверяются затреканные даты.
-    ///   - date: Дата, для которой проверяется, была ли затрекана привычка.
-    /// - Returns: Возвращает true, если привычка была затрекана в переданную дату.
+    // Checks if habit was tracked on a certain day
     public func habit(_ habit: Habit, isTrackedIn date: Date) -> Bool {
         habit.trackDates.contains { trackDate in
             calendar.isDate(date, equalTo: trackDate, toGranularity: .day)
@@ -217,7 +210,7 @@ public func removeTime(fromDate: Date) -> Date {
 
 
 public func getCurrentStrike(habit: Habit) -> Int {
-    var dates = HabitsStore.shared.dates
+    var dates = HabitsStore.shared.dates    
     var trackDates = habit.trackDates
     
     dates.sort(by: { $0 > $1 })
@@ -232,7 +225,6 @@ public func getCurrentStrike(habit: Habit) -> Int {
     
     if trackDates.first! == removeTime(fromDate: Date()) {
         dates.remove(at: 0)
-        strike += 1
     }
     
     while i < trackDates.count - 1 {
