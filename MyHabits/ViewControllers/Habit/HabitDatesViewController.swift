@@ -36,6 +36,7 @@ class HabitDatesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupDependencies()
         setupUI()
         setupNavigationBar()
@@ -45,11 +46,8 @@ class HabitDatesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         setLargeTitleDisplayMode(.never)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
     }
     
     // MARK: - Actions

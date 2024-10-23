@@ -149,6 +149,7 @@ class HabitEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupDependecies()
         setupUI()
         setupNavigationBar()
@@ -158,12 +159,11 @@ class HabitEditViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         setLargeTitleDisplayMode(.never)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
+    
     
     // MARK: - Actions
     

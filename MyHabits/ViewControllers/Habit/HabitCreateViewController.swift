@@ -99,6 +99,7 @@ class HabitCreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.hideKeyboardWhenTappedAround()
         
         colorPickerView.delegate = self
@@ -113,13 +114,11 @@ class HabitCreateViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         setLargeTitleDisplayMode(.never)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
+
     // MARK: - Actions
     
     @IBAction func colorCircleTapped(sender: AnyObject) {
