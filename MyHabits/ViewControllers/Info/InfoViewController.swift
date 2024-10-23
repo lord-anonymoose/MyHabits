@@ -87,12 +87,15 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
         addSubviews()
         setupConstraints()
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         scrollView.contentSize = contentView.frame.size
     }
 
